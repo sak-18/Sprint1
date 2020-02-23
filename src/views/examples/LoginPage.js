@@ -106,13 +106,14 @@ function LoginPage() {
                   </CardBody>
                   <CardFooter className="text-center">
                     <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                      <DropdownToggle caret>Button Dropdown</DropdownToggle>
+                      <DropdownToggle caret>User Type</DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem header>Choose an item</DropdownItem>
+                        <DropdownItem>Student</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Teacher</DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem>Admin</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
 

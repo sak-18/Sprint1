@@ -39,8 +39,13 @@ function IndexHeader() {
               className="n-logo"
               src={require("assets/img/now-logo.png")}
             ></img>
-            <h1 className="h1-seo">Cool Title</h1>
-            <h3>A portal for students to blah blah blah</h3>
+            <h1 className="h1-seo">BITSians for each other</h1>
+            <h3>
+              <b>BITSians for each other</b> is a one-stop platform to ask
+              questions and connect with people who have quality insights.
+              Students can post queries about the course and directly
+              communicate with their peers for the same.
+            </h3>
           </div>
         </Container>
       </div>
