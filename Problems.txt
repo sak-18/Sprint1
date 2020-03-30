@@ -1,0 +1,6 @@
+Problems:
+1) Hardcoded port number in many places(in components/utils)
+2)No signin implemented
+3)Problem with margin in discussion page navbar i.e some elements go behind the navbar
+4)css not rendering properly
+

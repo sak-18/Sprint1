@@ -117,9 +117,13 @@ function LoginPage() {
                       </DropdownMenu>
                     </ButtonDropdown>
 
-                    <button type="button" className="btn btn-gplus">
+                    <Button
+                      className="btn btn-gplus"
+                      to="/discussion-page"
+                      tag={Link}
+                    >
                       <i className="fab fa-google-plus-g pr-1"></i> Google +
-                    </button>
+                    </Button>
 
                     <Button
                       block

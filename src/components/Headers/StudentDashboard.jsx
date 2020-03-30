@@ -77,6 +77,7 @@ class StudentDashboard extends Component {
       this.getQuestions();
     });
   }
+
   selectFilterItem(type, event) {
     let filterHash = {
       department: "selectedDepartments",
