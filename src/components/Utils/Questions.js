@@ -12,7 +12,7 @@ class Questions extends Component {
   }
 
   async componentDidMount() {
-    const questions = (await axios.get("http://localhost:4000/")).data;
+    const questions = (await axios.get("/routes/questions")).data; // WORKING********************CHANGED "http://localhost:4000/"
     this.setState({
       questions,
     });

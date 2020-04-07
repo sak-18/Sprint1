@@ -30,7 +30,8 @@ class NewQuestion extends Component {
       disabled: true,
     });
 
-    await axios.post("http://localhost:4000", {
+    await axios.post("/routes/questions", {
+      // ********************CHANGED "http://localhost:4000" WORKING
       title: this.state.title,
       description: this.state.description,
     });

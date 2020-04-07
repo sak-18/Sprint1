@@ -19,7 +19,7 @@ const jwksRsa = require("jwks-rsa");
 // define the Express app
 const app = express();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 const uri = process.env.MONGODB_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
@@ -42,7 +42,7 @@ app.use(morgan("combined"));
 
 const questionsRouter = require("./routes/QuestionAPI");
 
-app.use("", questionsRouter);
+app.use("/routes/questions", questionsRouter); // ********************CHANGED
 
 // start the server
 
