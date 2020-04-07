@@ -4,3 +4,4 @@ Problems:
 3)Problem with margin in discussion page navbar i.e some elements go behind the navbar
 4)css not rendering properly
 
+https://polar-everglades-88896.herokuapp.com/ | https://git.heroku.com/polar-everglades-88896.git
