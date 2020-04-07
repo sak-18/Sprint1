@@ -19,12 +19,16 @@ import {
   InputGroup,
   NavLink,
   Container,
-  Col
+  Col,
 } from "reactstrap";
 
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
+
+function submit() {
+  alert("Empty Username");
+}
 
 function LoginPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
@@ -50,7 +54,7 @@ function LoginPage() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
+            backgroundImage: "url(" + require("assets/img/login.jpg") + ")",
           }}
         ></div>
         <div className="content">
@@ -79,6 +83,7 @@ function LoginPage() {
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
+                        id="Usrnm"
                         placeholder="User Name"
                         type="text"
                         onFocus={() => setFirstFocus(true)}
@@ -97,6 +102,7 @@ function LoginPage() {
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
+                        id="pswd"
                         placeholder="Password"
                         type="text"
                         onFocus={() => setLastFocus(true)}
@@ -120,6 +126,14 @@ function LoginPage() {
                     <Button
                       className="btn btn-gplus"
                       to="/discussion-page"
+                      onClick={() => {
+                        if (document.getElementById("Usrnm").value === "") {
+                          alert("Empty Username");
+                        }
+                        if (document.getElementById("pswd").value === "") {
+                          alert("Empty Password");
+                        }
+                      }}
                       tag={Link}
                     >
                       <i className="fab fa-google-plus-g pr-1"></i> Google +
@@ -148,7 +162,7 @@ function LoginPage() {
                         <a
                           className="link"
                           href="#pablo"
-                          onClick={e => e.preventDefault()}
+                          onClick={(e) => e.preventDefault()}
                         >
                           Need Help?
                         </a>

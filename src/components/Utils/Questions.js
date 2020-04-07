@@ -6,7 +6,7 @@ class Questions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: null
+      questions: null,
       //match: null
     };
   }
@@ -14,7 +14,7 @@ class Questions extends Component {
   async componentDidMount() {
     const questions = (await axios.get("http://localhost:4000/")).data;
     this.setState({
-      questions
+      questions,
     });
   }
 
@@ -42,7 +42,7 @@ class Questions extends Component {
         <div className="row">
           {this.state.questions === null && <p>Loading questions...</p>}
           {this.state.questions &&
-            this.state.questions.map(question => (
+            this.state.questions.map((question) => (
               <div key={question._id} className="col-sm-12 col-md-4 col-lg-3">
                 <Link to={`/discussion-page/question/${question._id}`}>
                   <div className="card text-white bg-success mb-3">

@@ -74,8 +74,8 @@ router.route("/answer/:id").post((req, res) => {
     })
     .catch(err => res.status(400).json("Error: " + err));
     */
-  console.log(req.body);
-  console.log(typeof req.body.answer);
+  //console.log(req.body);
+  //console.log(typeof req.body.answer);
   Question.findById(req.params.id)
     .then(question => {
       question.answers.push(req.body.answer);

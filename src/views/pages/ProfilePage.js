@@ -11,7 +11,7 @@ import {
   Container,
   Row,
   Col,
-  UncontrolledTooltip
+  UncontrolledTooltip,
 } from "reactstrap";
 
 // core components
@@ -64,9 +64,7 @@ function ProfilePage() {
                 Follow me on Instagram
               </UncontrolledTooltip>
             </div>
-            <h3 className="title">
-              About me
-            </h3>
+            <h3 className="title">About me</h3>
             <h5 className="description">
               An artist of considerable range, Ryan — the name taken by
               Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
@@ -86,7 +84,7 @@ function ProfilePage() {
                       <NavLink
                         className={pills === "1" ? "active" : ""}
                         href="#pablo"
-                        onClick={e => {
+                        onClick={(e) => {
                           e.preventDefault();
                           setPills("1");
                         }}
@@ -98,7 +96,7 @@ function ProfilePage() {
                       <NavLink
                         className={pills === "2" ? "active" : ""}
                         href="#pablo"
-                        onClick={e => {
+                        onClick={(e) => {
                           e.preventDefault();
                           setPills("2");
                         }}
@@ -110,7 +108,7 @@ function ProfilePage() {
                       <NavLink
                         className={pills === "3" ? "active" : ""}
                         href="#pablo"
-                        onClick={e => {
+                        onClick={(e) => {
                           e.preventDefault();
                           setPills("3");
                         }}

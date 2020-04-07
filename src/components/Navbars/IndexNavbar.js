@@ -14,7 +14,7 @@ import {
   NavLink,
   Nav,
   Container,
-  UncontrolledTooltip
+  UncontrolledTooltip,
 } from "reactstrap";
 
 function IndexNavbar() {
@@ -60,13 +60,13 @@ function IndexNavbar() {
             <Nav navbar>
               <NavItem className="">
                 <NavLink href="/register-page">
-                  <p>Register</p>
+                  <p>REGISTER</p>
                 </NavLink>
               </NavItem>
 
               <NavItem>
                 <NavLink href="/login-page">
-                  <p>Login</p>
+                  <p>LOGIN</p>
                 </NavLink>
               </NavItem>
             </Nav>

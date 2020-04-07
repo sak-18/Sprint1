@@ -5,13 +5,13 @@ class SubmitAnswer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      answer: ""
+      answer: "",
     };
   }
 
   updateAnswer(value) {
     this.setState({
-      answer: value
+      answer: value,
     });
   }
 
@@ -19,7 +19,7 @@ class SubmitAnswer extends Component {
     this.props.submitAnswer(this.state.answer);
 
     this.setState({
-      answer: ""
+      answer: "",
     });
   }
 
@@ -30,7 +30,7 @@ class SubmitAnswer extends Component {
           <label htmlFor="exampleInputEmail1">Answer:</label>
           <input
             type="text"
-            onChange={e => {
+            onChange={(e) => {
               this.updateAnswer(e.target.value);
             }}
             className="form-control"

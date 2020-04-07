@@ -6,7 +6,7 @@ class Question extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: null
+      question: null,
     };
 
     this.submitAnswer = this.submitAnswer.bind(this); //
@@ -18,20 +18,23 @@ class Question extends Component {
 
   async refreshQuestion() {
     const {
-      match: { params }
+      match: { params },
     } = this.props;
     const question = (
       await axios.get(`http://localhost:4000/${params.questionId}`)
     ).data;
     this.setState({
-      question
+      question,
     });
   }
   async submitAnswer(answer) {
+    if (answer === "") {
+      alert("Empty response");
+    }
     await axios.post(
       `http://localhost:4000/answer/${this.state.question._id}`,
       {
-        answer
+        answer,
       }
     );
     await this.refreshQuestion();

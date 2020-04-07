@@ -6,11 +6,11 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-// Creates schema for movie with required attributes and data types
+// Creates schema for Question with required attributes and data types
 var QuestionSchema = new Schema({
   title: { type: String, required: true, unique: true },
   description: { type: String, required: false },
-  answers: [{ type: String, required: false }]
+  answers: [{ type: String, required: false }],
 });
 
 const Question = mongoose.model("Question", QuestionSchema);

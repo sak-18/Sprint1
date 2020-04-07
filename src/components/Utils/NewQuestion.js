@@ -9,30 +9,30 @@ class NewQuestion extends Component {
     this.state = {
       disabled: false,
       title: "",
-      description: ""
+      description: "",
     };
   }
 
   updateDescription(value) {
     this.setState({
-      description: value
+      description: value,
     });
   }
 
   updateTitle(value) {
     this.setState({
-      title: value
+      title: value,
     });
   }
 
   async submit() {
     this.setState({
-      disabled: true
+      disabled: true,
     });
 
     await axios.post("http://localhost:4000", {
       title: this.state.title,
-      description: this.state.description
+      description: this.state.description,
     });
 
     this.props.history.push("/discussion-page");
@@ -51,7 +51,7 @@ class NewQuestion extends Component {
                   <input
                     disabled={this.state.disabled}
                     type="text"
-                    onBlur={e => {
+                    onBlur={(e) => {
                       this.updateTitle(e.target.value);
                     }}
                     className="form-control"
@@ -63,7 +63,7 @@ class NewQuestion extends Component {
                   <input
                     disabled={this.state.disabled}
                     type="text"
-                    onBlur={e => {
+                    onBlur={(e) => {
                       this.updateDescription(e.target.value);
                     }}
                     className="form-control"
