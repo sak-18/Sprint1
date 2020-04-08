@@ -45,7 +45,10 @@ const questionsRouter = require("./routes/QuestionAPI");
 app.use("/routes/questions", questionsRouter); // ********************CHANGED
 
 // start the server
-var host = process.env.YOUR_HOST || "0.0.0.0";
+var host = process.env.HOST || "0.0.0.0";
 app.listen(port, host, function () {
+  console.log("Listening on host:", host);
   console.log("Listening on port ", port);
+  console.log("Actual process host:" + process.env.HOST);
+  console.log("Actual process port:" + process.env.PORT);
 });
