@@ -2,6 +2,9 @@
   "name": "now-ui-kit-react",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "12.14.x"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "cors": "^2.8.5",
@@ -25,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-prebuild": "cd backend && npm install",
+    "heroku-prebuild": "cd backend && npm install && npm start",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "compile-sass": "node-sass src/assets/scss/now-ui-kit.scss src/assets/css/now-ui-kit.css",
     "minify-sass": "node-sass src/assets/scss/now-ui-kit.scss src/assets/css/now-ui-kit.min.css --output-style compressed",
