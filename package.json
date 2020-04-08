@@ -2,10 +2,10 @@
   "name": "Project-SE(sprint1)",
   "version": "1.0.0",
   "description": "![Now UI Kit React](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/now-ui-kit-react/opt_nuk_react_thumbnail.jpg)",
-  "main": "./backend/server.js",
+  "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon backend/server.js",
+    "start": "cd backend && npm install && node server.js",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "dependencies": {
