@@ -5,7 +5,7 @@
   "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd backend && npm install && node server.js",
+    "start": "node backend/server.js ",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "dependencies": {
@@ -32,5 +32,5 @@
     "url": "https://github.com/sak-18/Sprint1/issues"
   },
   "homepage": "https://github.com/sak-18/Sprint1#readme",
-  "proxy": "localhost:3000"
+  "proxy": "localhost:4000"
 }
