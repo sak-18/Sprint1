@@ -18,13 +18,11 @@ import {
   InputGroupText,
   InputGroup,
   Container,
-  Col
+  Col,
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import TransparentFooter from "components/Footers/TransparentFooter.js";
-//import SignUp from "../index-sections/SignUp.js";
+import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar.js";
 
 function RegisterPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
@@ -51,7 +49,8 @@ function RegisterPage() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
+            backgroundImage:
+              "url(" + require("../../assets/img/login.jpg") + ")",
           }}
         ></div>
         <div className="content">
@@ -68,7 +67,7 @@ function RegisterPage() {
                         className="btn-neutral btn-icon btn-round"
                         color="facebook"
                         href="#pablo"
-                        onClick={e => e.preventDefault()}
+                        onClick={(e) => e.preventDefault()}
                       >
                         <i className="fab fa-facebook-square"></i>
                       </Button>
@@ -77,7 +76,7 @@ function RegisterPage() {
                         className="btn-neutral btn-icon btn-round"
                         color="google"
                         href="#pablo"
-                        onClick={e => e.preventDefault()}
+                        onClick={(e) => e.preventDefault()}
                         size="lg"
                       >
                         <img
@@ -92,7 +91,7 @@ function RegisterPage() {
                         className="btn-neutral btn-icon btn-round"
                         color="twitter"
                         href="#pablo"
-                        onClick={e => e.preventDefault()}
+                        onClick={(e) => e.preventDefault()}
                       >
                         <i className="fab fa-twitter"></i>
                       </Button>

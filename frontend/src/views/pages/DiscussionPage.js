@@ -14,13 +14,13 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 //import "assets/css/DiscussionPage.css";
-import DiscussionNavbar from "components/Navbars/DiscussionNavbar.js";
+import DiscussionNavbar from "../../components/Navbars/DiscussionNavbar.js";
 
 // core components
-import NewQuestion from "components/Utils/NewQuestion.js";
-import Questions from "components/Utils/Questions.js";
-import Question from "components/Utils/Question.js";
-import NotFound from "components/Utils/NotFound.js";
+import NewQuestion from "../../components/Utils/NewQuestion.js";
+import Questions from "../../components/Utils/Questions.js";
+import Question from "../../components/Utils/Question.js";
+import NotFound from "../../components/Utils/NotFound.js";
 
 function DiscussionPage() {
   let match = useRouteMatch();

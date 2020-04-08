@@ -9,13 +9,13 @@ import {
   InputGroup,
   Container,
   Row,
-  Col
+  Col,
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import LandingPageHeader from "components/Headers/LandingPageHeader.js";
-import DefaultFooter from "components/Footers/DefaultFooter.js";
+import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar.js";
+import LandingPageHeader from "../../components/Headers/LandingPageHeader.js";
+import DefaultFooter from "../../components/Footers/DefaultFooter.js";
 
 function LandingPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
@@ -56,7 +56,7 @@ function LandingPage() {
                     className="image-container image-left"
                     style={{
                       backgroundImage:
-                        "url(" + require("assets/img/login.jpg") + ")"
+                        "url(" + require("../../assets/img/login.jpg") + ")",
                     }}
                   >
                     <p className="blockquote blockquote-info">
@@ -71,7 +71,7 @@ function LandingPage() {
                     className="image-container"
                     style={{
                       backgroundImage:
-                        "url(" + require("assets/img/bg3.jpg") + ")"
+                        "url(" + require("../../assets/img/bg3.jpg") + ")",
                     }}
                   ></div>
                 </Col>
@@ -80,7 +80,7 @@ function LandingPage() {
                     className="image-container image-right"
                     style={{
                       backgroundImage:
-                        "url(" + require("assets/img/bg1.jpg") + ")"
+                        "url(" + require("../../assets/img/bg1.jpg") + ")",
                     }}
                   ></div>
                   <h3>
@@ -131,7 +131,7 @@ function LandingPage() {
                     <img
                       alt="..."
                       className="rounded-circle img-fluid img-raised"
-                      src={require("assets/img/avatar.jpg")}
+                      src={require("../../assets/img/avatar.jpg")}
                     ></img>
                     <h4 className="title">Romina Hadid</h4>
                     <p className="category text-info">Model</p>
@@ -139,7 +139,7 @@ function LandingPage() {
                       You can write here details about one of your team members.
                       You can give more details about what they do. Feel free to
                       add some{" "}
-                      <a href="#pablo" onClick={e => e.preventDefault()}>
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
                         links
                       </a>{" "}
                       for people to be able to follow them outside the site.
@@ -148,7 +148,7 @@ function LandingPage() {
                       className="btn-icon btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={(e) => e.preventDefault()}
                     >
                       <i className="fab fa-twitter"></i>
                     </Button>
@@ -156,7 +156,7 @@ function LandingPage() {
                       className="btn-icon btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={(e) => e.preventDefault()}
                     >
                       <i className="fab fa-instagram"></i>
                     </Button>
@@ -164,7 +164,7 @@ function LandingPage() {
                       className="btn-icon btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={(e) => e.preventDefault()}
                     >
                       <i className="fab fa-facebook-square"></i>
                     </Button>
@@ -175,7 +175,7 @@ function LandingPage() {
                     <img
                       alt="..."
                       className="rounded-circle img-fluid img-raised"
-                      src={require("assets/img/ryan.jpg")}
+                      src={require("../../assets/img/ryan.jpg")}
                     ></img>
                     <h4 className="title">Ryan Tompson</h4>
                     <p className="category text-info">Designer</p>
@@ -183,7 +183,7 @@ function LandingPage() {
                       You can write here details about one of your team members.
                       You can give more details about what they do. Feel free to
                       add some{" "}
-                      <a href="#pablo" onClick={e => e.preventDefault()}>
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
                         links
                       </a>{" "}
                       for people to be able to follow them outside the site.
@@ -192,7 +192,7 @@ function LandingPage() {
                       className="btn-icon btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={(e) => e.preventDefault()}
                     >
                       <i className="fab fa-twitter"></i>
                     </Button>
@@ -200,7 +200,7 @@ function LandingPage() {
                       className="btn-icon btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={(e) => e.preventDefault()}
                     >
                       <i className="fab fa-linkedin"></i>
                     </Button>
@@ -211,7 +211,7 @@ function LandingPage() {
                     <img
                       alt="..."
                       className="rounded-circle img-fluid img-raised"
-                      src={require("assets/img/eva.jpg")}
+                      src={require("../../assets/img/eva.jpg")}
                     ></img>
                     <h4 className="title">Eva Jenner</h4>
                     <p className="category text-info">Fashion</p>
@@ -219,7 +219,7 @@ function LandingPage() {
                       You can write here details about one of your team members.
                       You can give more details about what they do. Feel free to
                       add some{" "}
-                      <a href="#pablo" onClick={e => e.preventDefault()}>
+                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
                         links
                       </a>{" "}
                       for people to be able to follow them outside the site.
@@ -228,7 +228,7 @@ function LandingPage() {
                       className="btn-icon btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={(e) => e.preventDefault()}
                     >
                       <i className="fab fa-google-plus"></i>
                     </Button>
@@ -236,7 +236,7 @@ function LandingPage() {
                       className="btn-icon btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={(e) => e.preventDefault()}
                     >
                       <i className="fab fa-youtube"></i>
                     </Button>
@@ -244,7 +244,7 @@ function LandingPage() {
                       className="btn-icon btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={(e) => e.preventDefault()}
                     >
                       <i className="fab fa-twitter"></i>
                     </Button>
@@ -309,7 +309,7 @@ function LandingPage() {
                     className="btn-round"
                     color="info"
                     href="#pablo"
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     size="lg"
                   >
                     Send Message

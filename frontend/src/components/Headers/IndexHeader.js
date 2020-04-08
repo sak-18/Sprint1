@@ -28,7 +28,8 @@ function IndexHeader() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/header.jpg") + ")"
+            backgroundImage:
+              "url(" + require("../../assets/img/header.jpg") + ")",
           }}
           ref={pageHeader}
         ></div>
@@ -37,7 +38,7 @@ function IndexHeader() {
             <img
               alt="..."
               className="n-logo"
-              src={require("assets/img/now-logo.png")}
+              src={require("../../assets/img/now-logo.png")}
             ></img>
             <h1 className="h1-seo">BITSians for each other</h1>
             <h3>

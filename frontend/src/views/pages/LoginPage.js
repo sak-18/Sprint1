@@ -23,12 +23,7 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import TransparentFooter from "components/Footers/TransparentFooter.js";
-
-function submit() {
-  alert("Empty Username");
-}
+import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar.js";
 
 function LoginPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
@@ -54,7 +49,8 @@ function LoginPage() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/login.jpg") + ")",
+            backgroundImage:
+              "url(" + require("../../assets/img/login.jpg") + ")",
           }}
         ></div>
         <div className="content">
@@ -66,7 +62,7 @@ function LoginPage() {
                     <div className="logo-container">
                       <img
                         alt="..."
-                        src={require("assets/img/now-logo.png")}
+                        src={require("../../assets/img/now-logo.png")}
                       ></img>
                     </div>
                   </CardHeader>
