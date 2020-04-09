@@ -7,31 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js ",
     "dev": "concurrently \"cd backend && npm run start\" \"cd frontend && npm run start\" ",
-    "heroku-postbuild": "cd frontend && npm install && npm run build",
-    "heroku-prebuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix backend && npm run build --prefix frontend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "dependencies": {
-    "axios": "^0.19.2",
-    "cors": "^2.8.5",
-    "helmet": "^3.22.0",
-    "moment": "2.24.0",
-    "morgan": "^1.10.0",
-    "node-sass": "^4.13.1",
-    "nouislider": "14.0.2",
-    "react": "16.8.6",
-    "react-bootstrap-switch": "15.5.3",
-    "react-datetime": "2.16.3",
-    "react-dom": "16.8.6",
-    "react-router": "5.0.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1",
-    "reactstrap": "8.0.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-jwt": "^5.3.1",
-    "jwks-rsa": "^1.7.0",
-    "mongoose": "^5.9.6",
-    "nodemon": "^2.0.3",
     "concurrently": "^5.1.0"
   },
   "engines": {

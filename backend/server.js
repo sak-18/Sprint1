@@ -42,8 +42,10 @@ app.use(morgan("combined"));
 
 const questionsRouter = require("./routes/QuestionAPI");
 
-app.use("/routes/questions", questionsRouter); // ********************CHANGED
 app.use(express.static(path.join(__dirname, "../frontend", "build")));
+
+app.use("/routes/questions", questionsRouter); // ********************CHANGED
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
 });
