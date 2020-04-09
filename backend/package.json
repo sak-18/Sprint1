@@ -5,10 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install && nodemon server.js"
-  },
-  "engines": {
-    "node": "12.14.1"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
