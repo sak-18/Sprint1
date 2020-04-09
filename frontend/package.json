@@ -20,7 +20,7 @@
     "reactstrap": "8.0.1"
   },
   "scripts": {
-    "start": "npm install && react-scripts start",
+    "start": "react-scripts start",
     "cypress:open": "cypress open",
     "build": "react-scripts build",
     "test": "react-scripts test",

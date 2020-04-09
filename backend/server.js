@@ -12,7 +12,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-
+const path = require("path");
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 
@@ -43,6 +43,7 @@ app.use(morgan("combined"));
 const questionsRouter = require("./routes/QuestionAPI");
 
 app.use("/routes/questions", questionsRouter); // ********************CHANGED
+app.use(express.static(path.join(__dirname, "../frontend", "build")));
 
 // start the server
 var host = process.env.HOST || "0.0.0.0";
