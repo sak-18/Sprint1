@@ -20,13 +20,9 @@ class Question extends Component {
     const {
       match: { params },
     } = this.props;
-    var url_1 = "routes/questions" + String(params.questionId);
+    var url_1 = "/routes/questions/" + String(params.questionId);
     console.log(url_1);
-    const question = (
-      await axios.get(
-        `http://localhost:4000` + `/routes/questions/${params.questionId}`
-      )
-    ).data; // ********************CHANGED `http://localhost:4000/${params.questionId}`
+    const question = (await axios.get(url_1)).data; // ********************CHANGED `http://localhost:4000/${params.questionId}`
     this.setState({
       question,
     });
@@ -36,10 +32,7 @@ class Question extends Component {
     if (answer === "") {
       alert("Empty response");
     }
-    var url_2 =
-      "http://localhost:4000/" +
-      "routes/questions/answer/" +
-      String(this.state.question._id);
+    var url_2 = "/routes/questions/answer/" + String(this.state.question._id);
     console.log(url_2);
     await axios.post(
       url_2, // ********************CHANGED `http://localhost:4000/answer/${this.state.question._id}`

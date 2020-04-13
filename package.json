@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js ",
     "dev": "concurrently \"cd backend && npm run start\" \"cd frontend && npm run start\" ",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "dependencies": {
     "concurrently": "^5.1.0"
