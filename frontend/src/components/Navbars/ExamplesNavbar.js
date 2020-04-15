@@ -109,7 +109,7 @@ function ExamplesNavbar() {
           >
             <Nav navbar>
               <NavItem>
-                <NavLink to="/index" tag={Link}>
+                <NavLink to="/discussion-page" tag={Link}>
                   Back to Homepage
                 </NavLink>
               </NavItem>
