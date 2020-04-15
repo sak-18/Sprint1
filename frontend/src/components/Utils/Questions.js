@@ -50,8 +50,9 @@ class Questions extends Component {
                       Answers: {question.answers.length}
                     </div>
                     <div className="card-body">
-                      <h5 className="card-title">{question.title}</h5>
-                      <p className="card-text">{question.description}</p>
+                      <h3 className="card-title">{question.title}</h3>
+                      <h4 className="card-text">{question.description}</h4>
+                      <p className="card-text">{question.answers} <p>
                     </div>
                   </div>
                 </Link>
