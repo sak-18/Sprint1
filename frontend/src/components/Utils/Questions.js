@@ -52,7 +52,6 @@ class Questions extends Component {
                     <div className="card-body">
                       <h3 className="card-title">{question.title}</h3>
                       <h4 className="card-text">{question.description}</h4>
-                      <p className="card-text">{question.answers} <p>
                     </div>
                   </div>
                 </Link>
