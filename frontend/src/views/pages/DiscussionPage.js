@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 // reactstrap components
 import {
@@ -29,6 +31,15 @@ function DiscussionPage() {
       <DiscussionNavbar />
       <p>This goes behind navbar for some reason</p>
       <br />
+      <Button
+        to="courses/ISF341"
+        color="info"
+        tag={Link}
+        size="lg"
+      >
+        ISF341
+      </Button>
+      
       <Route
         exact
         path={`${match.path}/new-question`}

@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/sak-18/Sprint1/issues"
   },
-  "homepage": "https://github.com/sak-18/Sprint1#readme"
+  "homepage": "https://github.com/sak-18/Sprint1#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
 }

@@ -124,10 +124,10 @@ function LoginPage() {
                       to="/discussion-page"
                       onClick={() => {
                         if (document.getElementById("Usrnm").value === "") {
-                          alert("Empty Username");
+                          // alert("Empty Username");
                         }
                         if (document.getElementById("pswd").value === "") {
-                          alert("Empty Password");
+                          // alert("Empty Password");
                         }
                       }}
                       tag={Link}

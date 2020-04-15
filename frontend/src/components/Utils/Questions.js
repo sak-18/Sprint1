@@ -43,14 +43,14 @@ class Questions extends Component {
           {this.state.questions === null && <p>Loading questions...</p>}
           {this.state.questions &&
             this.state.questions.map((question) => (
-              <div key={question._id} className="col-sm-12 col-md-4 col-lg-3">
+              <div key={question._id} className="col-sm-12 col-md-8 col-lg-4">
                 <Link to={`/discussion-page/question/${question._id}`}>
-                  <div className="card text-white bg-success mb-3">
+                  <div className="card text-dark shadow p-4 mb-3 bg-light">
                     <div className="card-header">
                       Answers: {question.answers.length}
                     </div>
                     <div className="card-body">
-                      <h4 className="card-title">{question.title}</h4>
+                      <h5 className="card-title">{question.title}</h5>
                       <p className="card-text">{question.description}</p>
                     </div>
                   </div>

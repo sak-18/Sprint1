@@ -44,7 +44,10 @@ const questionsRouter = require("./routes/QuestionAPI");
 
 app.use("/routes/questions", questionsRouter); // ********************CHANGED
 
+const reviewRouter = require("./routes/ReviewAPI");
+app.use("/routes/reviews", reviewRouter);
 //Server static assets if in production
+
 if (process.env.NODE_ENV === "production") {
   //Set static folder
   console.log({ "IN node_env": process.env.NODE_ENV });

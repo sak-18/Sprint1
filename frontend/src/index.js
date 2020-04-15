@@ -31,7 +31,7 @@ import Index from "./views/Index.js";
 import LoginPage from "./views/pages/LoginPage.js";
 import RegisterPage from "./views/pages/RegisterPage.js";
 import LandingPage from "./views/pages/LandingPage.js";
-import ProfilePage from "./views/pages/ProfilePage.js";
+import CourseHomePage from "./views/pages/CourseHome.js";
 import DiscussionPage from "./views/pages/DiscussionPage.js";
 
 ReactDOM.render(
@@ -44,8 +44,8 @@ ReactDOM.render(
           render={(props) => <LandingPage {...props} />}
         />
         <Route
-          path="/profile-page"
-          render={(props) => <ProfilePage {...props} />}
+          path="/courses/ISF341"
+          render={(props) => <CourseHomePage {...props} />}
         />
         <Route
           path="/discussion-page"
