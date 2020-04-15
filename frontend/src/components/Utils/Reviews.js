@@ -33,7 +33,7 @@ class Reviews extends Component {
           {this.state.reviews === null && <p>Looks Empty in here!</p>}
           {this.state.reviews &&
             this.state.reviews.map(review => (
-              <div key={review._id} className="col-sm-12 col-md-6 col-lg-12">
+              <div key={review._id} className="col-sm-12 col-md-6 col-lg-4">
                 <Link to={`/courses/ISF341/review/${review._id}`}>
                   <div className="card text-dark shadow p-4 mb-3 bg-light">
                     
