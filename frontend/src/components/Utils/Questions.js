@@ -43,7 +43,7 @@ class Questions extends Component {
           {this.state.questions === null && <p>Loading questions...</p>}
           {this.state.questions &&
             this.state.questions.map((question) => (
-              <div key={question._id} className="col-sm-12 col-md-8 col-lg-8">
+              <div key={question._id} className="col-sm-12 col-md-8 col-lg-12">
                 <Link to={`/discussion-page/question/${question._id}`}>
                   <div className="card text-dark shadow p-4 mb-3 bg-light">
                     <div className="card-header">
