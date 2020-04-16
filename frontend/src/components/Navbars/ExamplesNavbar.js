@@ -113,11 +113,11 @@ function ExamplesNavbar() {
                   Back to Homepage
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/creativetimofficial/now-ui-kit-react/issues?ref=creativetim">
-                  Have an issue?
-                </NavLink>
-              </NavItem>
+//               <NavItem>
+//                 <NavLink href="https://github.com/creativetimofficial/now-ui-kit-react/issues?ref=creativetim">
+//                   Have an issue?
+//                 </NavLink>
+//               </NavItem>
             </Nav>
           </Collapse>
         </Container>
