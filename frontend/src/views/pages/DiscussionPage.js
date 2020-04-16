@@ -16,7 +16,7 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 //import "assets/css/DiscussionPage.css";
-import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar.js";
+import DiscussionNavbar from "../../components/Navbars/DiscussionNavbar.js";
 
 // core components
 import NewQuestion from "../../components/Utils/NewQuestion.js";
@@ -28,7 +28,7 @@ function DiscussionPage() {
   let match = useRouteMatch();
   return (
     <div>
-      <ExamplesNavbar />
+      <DiscussionNavbar />
       <p>This goes behind navbar for some reason</p>
       <br />
       <Button
