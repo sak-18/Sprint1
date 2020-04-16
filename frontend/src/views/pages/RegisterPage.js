@@ -62,40 +62,6 @@ function RegisterPage() {
                     <CardTitle className="title-up" tag="h3">
                       Sign Up
                     </CardTitle>
-                    <div className="social-line">
-                      <Button
-                        className="btn-neutral btn-icon btn-round"
-                        color="facebook"
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="fab fa-facebook-square"></i>
-                      </Button>
-
-                      <Button
-                        className="btn-neutral btn-icon btn-round"
-                        color="google"
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                        size="lg"
-                      >
-                        <img
-                          width="30px"
-                          style={{ marginTop: "15px", marginRight: "2px" }}
-                          alt="Google sign-in"
-                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
-                        />
-                      </Button>
-
-                      <Button
-                        className="btn-neutral btn-icon btn-round"
-                        color="twitter"
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="fab fa-twitter"></i>
-                      </Button>
-                    </div>
                   </CardHeader>
                   <CardBody>
                     <InputGroup
