@@ -66,16 +66,16 @@ function ExamplesNavbar() {
             </DropdownToggle>
             <DropdownMenu aria-labelledby="navbarDropdown">
               <DropdownItem header tag="a">
-                Dropdown header
+                Courses By Department
               </DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Action
+                Computer Science
               </DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Another action
+                Chemical Engineering
               </DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Something else here
+                Economics and FInance
               </DropdownItem>
               <DropdownItem divider></DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
@@ -83,7 +83,7 @@ function ExamplesNavbar() {
               </DropdownItem>
               <DropdownItem divider></DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                One more separated link
+                Humanities
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
