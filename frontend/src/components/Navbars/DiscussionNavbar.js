@@ -25,7 +25,7 @@ function DiscussionNavbar() {
         document.documentElement.scrollTop > 399 ||
         document.body.scrollTop > 399
       ) {
-        setNavbarColor("blue");
+        setNavbarColor("lightblue");
       } else if (
         document.documentElement.scrollTop < 400 ||
         document.body.scrollTop < 400
