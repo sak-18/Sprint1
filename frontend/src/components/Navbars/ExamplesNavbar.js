@@ -79,7 +79,7 @@ function ExamplesNavbar() {
               </DropdownItem>
               <DropdownItem divider></DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Separated link
+                Mechanical Engineering
               </DropdownItem>
               <DropdownItem divider></DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
