@@ -107,20 +107,10 @@ function LoginPage() {
                     </InputGroup>
                   </CardBody>
                   <CardFooter className="text-center">
-                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                      <DropdownToggle caret>User Type</DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem header>Choose an item</DropdownItem>
-                        <DropdownItem>Student</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Teacher</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Admin</DropdownItem>
-                      </DropdownMenu>
-                    </ButtonDropdown>
+                    
 
                     <Button
-                      className="btn btn-gplus"
+                      className="btn"
                       to="/discussion-page"
                       onClick={() => {
                         if (document.getElementById("Usrnm").value === "") {
