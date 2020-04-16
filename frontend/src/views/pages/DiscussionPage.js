@@ -29,7 +29,9 @@ function DiscussionPage() {
   return (
     <div>
       <DiscussionNavbar />
-      <p>This goes behind navbar for some reason</p>
+      <br />
+      <br />
+      <br />
       <br />
       <Button
         to="courses/ISF341"
