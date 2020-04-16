@@ -107,22 +107,6 @@ function LoginPage() {
                     </InputGroup>
                   </CardBody>
                   <CardFooter className="text-center">
-//                     <Button
-//                       className="btn"
-//                       to="/discussion-page"
-//                       onClick={() => {
-//                         if (document.getElementById("Usrnm").value === "") {
-//                           // alert("Empty Username");
-//                         }
-//                         if (document.getElementById("pswd").value === "") {
-//                           // alert("Empty Password");
-//                         }
-//                       }}
-//                       tag={Link}
-//                     >
-//                       <i className="fab fa-google-plus-g pr-1"></i> Google +
-//                     </Button>
-
                     <Button
                       block
                       className="btn-round"
