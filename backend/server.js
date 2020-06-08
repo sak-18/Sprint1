@@ -5,7 +5,8 @@
 
 //import dependencies
 require("dotenv").config();
-
+require("../backend/passport");
+require("../backend/models/User");
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -15,7 +16,8 @@ const morgan = require("morgan");
 const path = require("path");
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
-
+const passport = require("passport");
+const cookieSession = require("cookie-session");
 // define the Express app
 const app = express();
 
@@ -40,12 +42,30 @@ app.use(cors());
 // log HTTP requests
 app.use(morgan("combined"));
 
+/**
+	PassportJS - JWT Authentication With Google
+**/
+app.use(passport.initialize());
+app.use(passport.session());
+
 const questionsRouter = require("./routes/QuestionAPI");
 
 app.use("/routes/questions", questionsRouter); // ********************CHANGED
 
 const reviewRouter = require("./routes/ReviewAPI");
 app.use("/routes/reviews", reviewRouter);
+
+const userRouter = require("./routes/UserAPI");
+app.use("/routes/users", userRouter);
+
+const signInRouter = require("./routes/Signin");
+app.use("/", signInRouter);
+
+/*
+const authRouter = require("./routes/Auth");
+app.use("/routes/auth", authRouter);
+*/
+
 //Server static assets if in production
 
 if (process.env.NODE_ENV === "production") {

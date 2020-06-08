@@ -10,7 +10,10 @@
     "heroku-postbuild": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "dependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "cookie-session": "^1.4.0",
+    "passport": "^0.4.1",
+    "react-google-login": "^5.1.20"
   },
   "engines": {
     "node": "12.x"

@@ -17,8 +17,8 @@ const app = express();
 // retrieve all questions - tested with postman
 router.route("/").get((req, res) => {
   Question.find()
-    .then(questions => res.json(questions))
-    .catch(err => res.status(400).json("Error: " + err));
+    .then((questions) => res.json(questions))
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 // get a specific question - tested with postman
@@ -34,8 +34,8 @@ router.route("/:id").get((req, res) => {
   res.send(question[0]);
 */
   Question.findById(req.params.id)
-    .then(question => res.json(question))
-    .catch(err => res.status(400).json("Error: " + err));
+    .then((question) => res.json(question))
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //insert a new question - tested with postman
@@ -47,13 +47,13 @@ router.route("/").post((req, res) => {
   const newQuestion = new Question({
     title,
     description,
-    answers
+    answers,
   });
 
   newQuestion
     .save()
     .then(() => res.json("Question added!"))
-    .catch(err => res.status(400).json("Error: " + err));
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //http://localhost:4000/${params.questionId}
@@ -77,15 +77,15 @@ router.route("/answer/:id").post((req, res) => {
   //console.log(req.body);
   //console.log(typeof req.body.answer);
   Question.findById(req.params.id)
-    .then(question => {
+    .then((question) => {
       question.answers.push(req.body.answer);
       console.log(question);
       question
         .save()
         .then(() => res.json("Question updated!"))
-        .catch(err => res.status(400).json("Error: " + err));
+        .catch((err) => res.status(400).json("Error: " + err));
     })
-    .catch(err => res.status(400).json("Error: " + err));
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;

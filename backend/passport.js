@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const User = mongoose.model("users");
+//const User = mongoose.model("users");
+var { User } = require("../backend/models/User");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
@@ -8,7 +9,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
+  User.findById(id).then((user) => {
     done(null, user);
   });
 });
@@ -18,10 +19,10 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID || "clientID",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "clientSecret",
-      callbackURL: "/auth/google/callback"
+      callbackURL: "/auth/google/callback",
     },
     (accessToken, refreshToken, profile, done) => {
-      User.findOne({ email: profile.emails[0].value }).then(existingUser => {
+      User.findOne({ email: profile.emails[0].value }).then((existingUser) => {
         if (existingUser) {
           done(null, existingUser);
         } else {
@@ -29,10 +30,10 @@ passport.use(
             googleId: profile.id,
             name: profile.displayName,
             email: profile.emails[0].value,
-            photo: profile.photos[0].value.split("?")[0]
+            photo: profile.photos[0].value.split("?")[0],
           })
             .save()
-            .then(user => done(null, user));
+            .then((user) => done(null, user));
         }
       });
     }

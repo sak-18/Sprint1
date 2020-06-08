@@ -19,6 +19,11 @@
     "jwks-rsa": "^1.7.0",
     "mongoose": "^5.9.6",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "cookie-session": "^1.4.0",
+    "express-session": "^1.17.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0",
+    "passport-google-oauth-jwt": "^0.2.3"
   }
 }
