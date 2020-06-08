@@ -66,24 +66,24 @@ function ExamplesNavbar() {
             </DropdownToggle>
             <DropdownMenu aria-labelledby="navbarDropdown">
               <DropdownItem header tag="a">
-                Dropdown header
+                Courses By Department
               </DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Action
+                Computer Science
               </DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Another action
+                Chemical Engineering
               </DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Something else here
-              </DropdownItem>
-              <DropdownItem divider></DropdownItem>
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Separated link
+                Economics and FInance
               </DropdownItem>
               <DropdownItem divider></DropdownItem>
               <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                One more separated link
+                Mechanical Engineering
+              </DropdownItem>
+              <DropdownItem divider></DropdownItem>
+              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
+                Humanities
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
@@ -109,13 +109,8 @@ function ExamplesNavbar() {
           >
             <Nav navbar>
               <NavItem>
-                <NavLink to="/index" tag={Link}>
+                <NavLink to="/discussion-page" tag={Link}>
                   Back to Homepage
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/creativetimofficial/now-ui-kit-react/issues?ref=creativetim">
-                  Have an issue?
                 </NavLink>
               </NavItem>
             </Nav>
