@@ -1,14 +1,12 @@
 const axios = require("axios");
 const jwtDecode = require("jwt-decode");
 
-
-
-let getToken = (mail,callback) => {
-    axios
-    .post("/api/auth/" ,{
-      email:mail
+let getToken = (mail, callback) => {
+  axios
+    .post("/api/auth/", {
+      email: mail,
     })
-    .then(response => {
+    .then((response) => {
       if (response.status === 200) {
         sessionStorage.setItem("token", response.data.token);
         callback(null, response.data.token);
@@ -16,29 +14,29 @@ let getToken = (mail,callback) => {
         callback(true, null);
       }
     })
-    .catch(error => {
+    .catch((error) => {
       callback(error, null);
     });
 };
 
-let postuserandgetToken = (names,mail,pic,callback) => {
+let postuserandgetToken = (names, mail, pic, callback) => {
   axios
-  .post("/api/students/" ,{
-    name:names,
-    email:mail,
-    photo:pic
-  })
-  .then(response => {
-    if (response.status === 200) {
-      sessionStorage.setItem("token", response.data.token);
-      callback(null, response.data.token);
-    } else {
-      callback(true, null);
-    }
-  })
-  .catch(error => {
-    callback(error, null);
-  });
+    .post("/api/students/", {
+      name: names,
+      email: mail,
+      photo: pic,
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        sessionStorage.setItem("token", response.data.token);
+        callback(null, response.data.token);
+      } else {
+        callback(true, null);
+      }
+    })
+    .catch((error) => {
+      callback(error, null);
+    });
 };
 
 let checkToken = () => {
@@ -63,5 +61,5 @@ module.exports = {
   getToken,
   checkToken,
   postuserandgetToken,
-  getDecodedToken
+  getDecodedToken,
 };

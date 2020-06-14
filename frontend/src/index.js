@@ -24,11 +24,8 @@ import "./assets/css/bootstrap.min.css";
 import "./assets/scss/now-ui-kit.scss";
 import "./assets/demo/demo.css";
 import "./assets/demo/nucleo-icons-page-styles.css";
-<<<<<<< HEAD
 //import "./ShardDashboard/src/shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
 
-=======
->>>>>>> repo2/master
 //import "assets/css/DiscussionPage.css";
 
 // pages for this kit
@@ -37,14 +34,10 @@ import LoginPage from "./views/pages/LoginPage.js";
 import RegisterPage from "./views/pages/RegisterPage.js";
 import LandingPage from "./views/pages/LandingPage.js";
 import CourseHomePage from "./views/pages/CourseHome.js";
-<<<<<<< HEAD
-import DiscussionPage from "./views/pages/DiscussionPage.js";
+
 import AdminPage from "./views/pages/AdminPage.js";
 import AddCoursePage from "./views/pages/AddCoursePage.js";
-=======
 import DiscussionPage from "./views/pages/DiscussionPage.jsx";
->>>>>>> repo2/master
-
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
@@ -67,7 +60,6 @@ ReactDOM.render(
           render={(props) => <LoginPage {...props} />}
         />
         <Route
-<<<<<<< HEAD
           path="/admin-page"
           render={(props) => <AdminPage {...props} />}
         />
@@ -76,8 +68,6 @@ ReactDOM.render(
           render={(props) => <AddCoursePage {...props} />}
         />
         <Route
-=======
->>>>>>> repo2/master
           path="/register-page"
           render={(props) => <RegisterPage {...props} />}
         />

@@ -9,8 +9,8 @@ import UsersByDevice from "./../components/blog/UsersByDevice";
 import NewDraft from "./../components/blog/NewDraft";
 import Discussions from "./../components/blog/Discussions";
 import TopReferrals from "./../components/common/TopReferrals";
-import styles from "../shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
-import bstyles from "bootstrap/dist/css/bootstrap.min.module.css";
+//import styles from "../shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
+//import bstyles from "bootstrap/dist/css/bootstrap.min.module.css";
 
 const BlogOverview = ({ smallStats }) => (
   <Container fluid className="main-content-container px-4">
