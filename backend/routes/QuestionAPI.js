@@ -62,7 +62,7 @@ router.route("/").post((req, res) => {
 // insert a new answer to a question -to be tested with postman
 //problem here
 // router.route("/answer/:id").post((req, res) => {
-router.post('/answer/:id', auth, (req,res) =>{
+router.post('/answer/:id', (req,res) =>{
   Question.findById(req.params.id)
     .then((question) => {
       question.answers.push(req.body.answer);

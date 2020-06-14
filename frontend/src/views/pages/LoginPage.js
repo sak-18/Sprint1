@@ -102,7 +102,7 @@ class LoginPage extends Component {
                   </CardBody>
                   <font color="red">
                     {this.state.failed
-                      ? "Account not found. Please register and try again"
+                      ? "Please Refresh this page to go forward"
                       : ""}
                   </font>
                   <CardFooter className="text-center">

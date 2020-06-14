@@ -32,7 +32,7 @@ import LoginPage from "./views/pages/LoginPage.js";
 import RegisterPage from "./views/pages/RegisterPage.js";
 import LandingPage from "./views/pages/LandingPage.js";
 import CourseHomePage from "./views/pages/CourseHome.js";
-import DiscussionPage from "./views/pages/DiscussionPage.js";
+import DiscussionPage from "./views/pages/DiscussionPage.jsx";
 
 ReactDOM.render(
   <BrowserRouter>

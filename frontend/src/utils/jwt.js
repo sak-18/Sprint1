@@ -1,21 +1,6 @@
 const axios = require("axios");
 const jwtDecode = require("jwt-decode");
 
-// let getToken =(token,callback) => {
-//     axios
-//         .put('/api/auth/')
-//         .then(response => {
-//             if (response.status === 200) {
-//                 sessionStorage.setItem("token", response.data.token);
-//                 callback(null, response.data.token);
-//               } else {
-//                 callback(true, null);
-//               }
-//         })
-//         .catch(error => {
-//             callback(error, null);
-//           });
-// }
 
 
 let getToken = (mail,callback) => {
@@ -37,7 +22,6 @@ let getToken = (mail,callback) => {
 };
 
 let postuserandgetToken = (names,mail,pic,callback) => {
-  
   axios
   .post("/api/students/" ,{
     name:names,

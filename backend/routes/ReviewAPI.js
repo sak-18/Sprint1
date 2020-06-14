@@ -17,14 +17,14 @@ const auth = require('../middleware/auth');
 const app = express();
 
 // retrieve all reviews - tested with postman
-router.route("/").get(auth,(req, res) => {
+router.route("/").get((req, res) => {
   Review.find()
     .then(reviews => res.json(reviews))
     .catch(err => res.status(400).json("Error: " + err));
 });
 
 // get a specific review - tested with postman
-router.route("/:id/").get(auth,(req, res) => {
+router.route("/:id/").get((req, res) => {
   
   Review.findById(req.params.id)
     .then(review => res.json(review))
@@ -32,7 +32,7 @@ router.route("/:id/").get(auth,(req, res) => {
 });
 
 //insert a new review - tested with postman
-router.route("/").post(auth,(req, res) => {
+router.route("/").post((req, res) => {
   const title = req.body.title;
   const description = req.body.description;
   const rating = req.body.rating;

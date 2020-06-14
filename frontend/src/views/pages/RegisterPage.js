@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+// require("dotenv").config();
 
 // reactstrap components
 import { GoogleLogin } from "react-google-login";
@@ -86,7 +87,11 @@ class RegisterPage extends Component {
                             cookiePolicy={"single_host_origin"}
                           />
                       </div>
-                      
+                      <font color="red">
+                      {this.state.failed
+                        ? "Please Refresh this page to go forward"
+                        : ""}
+                    </font>
                       </CardBody>
                     </Form>
                   </Card>
