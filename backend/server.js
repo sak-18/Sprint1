@@ -7,6 +7,7 @@
 require("dotenv").config();
 require("../backend/passport");
 require("../backend/models/User");
+require("../backend/models/Student");
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -61,6 +62,13 @@ app.use("/routes/reviews", reviewRouter);
 
 const userRouter = require("./routes/UserAPI");
 app.use("/routes/users", userRouter);
+
+const StudentRouter = require("./routes/StudentAPI");
+app.use("/api/students", StudentRouter);
+
+
+const AuthorisationRouter = require("./routes/auth");
+app.use("/api/auth", AuthorisationRouter);
 
 const signInRouter = require("./routes/Signin");
 app.use("/", signInRouter);

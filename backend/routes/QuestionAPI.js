@@ -11,6 +11,8 @@ const morgan = require("morgan");
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 
+const auth = require('../middleware/auth');
+ 
 // define the Express app
 const app = express();
 

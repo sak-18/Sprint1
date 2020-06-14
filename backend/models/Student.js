@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 // Create the Schema
-var UserSchema = new Schema({
+var StudentSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -14,8 +14,6 @@ var UserSchema = new Schema({
   },
   photo: {
     type: String,
-    default:
-      "https://res.cloudinary.com/geekysrm/image/upload/v1542221619/default-user.png",
     // required: true,
   },
   registration_date: {
@@ -24,7 +22,7 @@ var UserSchema = new Schema({
   }
 });
 
-const User = mongoose.model("User", UserSchema);
+const Student = mongoose.model("Student", StudentSchema);
 // Below code used for exporting the Schemas
 // Used when we need to import the below Schemas in another file.
-module.exports = { User: User };
+module.exports = { Student: Student };

@@ -10,6 +10,7 @@
     "heroku-postbuild": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@craco/craco": "^5.6.4",
     "chart.js": "^2.9.3",
     "concurrently": "^5.1.0",
@@ -17,6 +18,12 @@
     "passport": "^0.4.1",
     "react-google-login": "^5.1.20",
     "shards-react": "^1.0.3"
+=======
+    "concurrently": "^5.1.0",
+    "cookie-session": "^1.4.0",
+    "passport": "^0.4.1",
+    "react-google-login": "^5.1.20"
+>>>>>>> repo2/master
   },
   "engines": {
     "node": "12.x"
@@ -33,7 +40,10 @@
   },
   "homepage": "https://github.com/sak-18/Sprint1#readme",
   "devDependencies": {
+<<<<<<< HEAD
     "babel-plugin-react-scoped-css": "^1.0.0",
+=======
+>>>>>>> repo2/master
     "nodemon": "^2.0.3"
   }
 }
