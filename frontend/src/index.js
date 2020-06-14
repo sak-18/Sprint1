@@ -24,6 +24,8 @@ import "./assets/css/bootstrap.min.css";
 import "./assets/scss/now-ui-kit.scss";
 import "./assets/demo/demo.css";
 import "./assets/demo/nucleo-icons-page-styles.css";
+//import "./ShardDashboard/src/shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
+
 //import "assets/css/DiscussionPage.css";
 
 // pages for this kit
@@ -33,6 +35,8 @@ import RegisterPage from "./views/pages/RegisterPage.js";
 import LandingPage from "./views/pages/LandingPage.js";
 import CourseHomePage from "./views/pages/CourseHome.js";
 import DiscussionPage from "./views/pages/DiscussionPage.js";
+import AdminPage from "./views/pages/AdminPage.js";
+import AddCoursePage from "./views/pages/AddCoursePage.js";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -54,6 +58,14 @@ ReactDOM.render(
         <Route
           path="/login-page"
           render={(props) => <LoginPage {...props} />}
+        />
+        <Route
+          path="/admin-page"
+          render={(props) => <AdminPage {...props} />}
+        />
+        <Route
+          path="/addcourse-page"
+          render={(props) => <AddCoursePage {...props} />}
         />
         <Route
           path="/register-page"

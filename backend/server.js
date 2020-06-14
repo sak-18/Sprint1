@@ -52,6 +52,10 @@ const questionsRouter = require("./routes/QuestionAPI");
 
 app.use("/routes/questions", questionsRouter); // ********************CHANGED
 
+const coursesRouter = require("./routes/CourseAPI");
+
+app.use("/routes/courses", coursesRouter); // ********************CHANGED
+
 const reviewRouter = require("./routes/ReviewAPI");
 app.use("/routes/reviews", reviewRouter);
 

@@ -173,18 +173,14 @@ function LoginPage(props) {
                     </InputGroup>
                   </CardBody>
                   <CardFooter className="text-center">
-                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                      <DropdownToggle caret>User Type</DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem header>Choose an item</DropdownItem>
-                        <DropdownItem>Student</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Teacher</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Admin</DropdownItem>
-                      </DropdownMenu>
-                    </ButtonDropdown>
-
+                    <Button
+                      className="btn-neutral btn-round"
+                      color="info"
+                      href="/admin-page"
+                      size="lg"
+                    >
+                      Admin Login
+                    </Button>
                     <div>
                       <GoogleLogin
                         clientId="978769481338-f5mg1lb2p50mo64sa6eb4860he6n4smv.apps.googleusercontent.com"
