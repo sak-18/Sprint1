@@ -50,11 +50,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const questionsRouter = require("./routes/QuestionAPI");
-
 app.use("/routes/questions", questionsRouter); // ********************CHANGED
 
-const coursesRouter = require("./routes/CourseAPI");
+const answerRouter = require("./routes/AnswerAPI");
+app.use("/routes/answers", answerRouter); // ********************CHANGED
 
+const coursesRouter = require("./routes/CourseAPI");
 app.use("/routes/courses", coursesRouter); // ********************CHANGED
 
 const reviewRouter = require("./routes/ReviewAPI");

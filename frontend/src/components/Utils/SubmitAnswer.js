@@ -17,22 +17,34 @@ class SubmitAnswer extends Component {
       answer: value,
     });
   }
-  submitAnonymously(){
-    this.props.submitAnswer(this.state.answer);
 
+  async submitAnonymously() {
     this.setState({
-      postedby:this.state.postedby,
-      answer: "",
+      disabled: true,
     });
-  }
-  submit() {
-    this.props.submitAnswer(this.state.answer);
 
-    this.setState({
-      postedby:this.user.name,
-      answer: "",
+    await axios.post("/routes/questions", {
+      questionid: this.state.title,
+      postedby: "Anonymous Student",
+      answer: this.state.answer,
     });
+
+    this.props.history.push("/discussion-page");
   }
+  async submit() {
+    this.setState({
+      disabled: true,
+    });
+
+    await axios.post("/routes/questions", {
+      questionid: this.state.title,
+      postedby: this.user.name,
+      answer: this.state.answer,
+    });
+
+    this.props.history.push("/discussion-page");
+  }
+  
 
   render() {
     return (
