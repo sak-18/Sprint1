@@ -70,16 +70,6 @@ app.use("/api/students", StudentRouter);
 const AuthorisationRouter = require("./routes/auth");
 app.use("/api/auth", AuthorisationRouter);
 
-<<<<<<< HEAD
-=======
-const signInRouter = require("./routes/Signin");
-app.use("/", signInRouter);
-
-/*
-const authRouter = require("./routes/Auth");
-app.use("/routes/auth", authRouter);
-*/
->>>>>>> 71fba5b83503d214699380a83ba814c4632108f8
 
 //Server static assets if in production
 
