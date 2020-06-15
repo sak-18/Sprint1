@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 import { getDecodedToken } from "../../utils/jwt";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import logo from "../../assets/img/logo.png";
+import Image from "react-bootstrap/Image";
 // reactstrap components
 import {
   Collapse,
@@ -129,12 +129,12 @@ function ExamplesNavbar() {
                 <NavDropdown.Item>Logout</NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>
-            <img
-              src={logo}
-              height="30"
-              className="d-inline-block align-top"
-              alt="BITSians For Each Other"
-            />
+            <Image
+            src={getDecodedToken().photo}
+            width="35"
+            height="35"
+            roundedCircle
+          />
           </Collapse>
         </Container>
       </Navbar>

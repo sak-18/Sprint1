@@ -22,6 +22,7 @@ router.post('/', (req,res) => {
                 id: user.id,
                 email: user.email,
                 name: user.name,
+                photo: user.photo,
               },
               process.env.JWT_SECRET,
               {expiresIn: 600},
