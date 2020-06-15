@@ -14,11 +14,23 @@ const jwksRsa = require("jwks-rsa");
 // define the Express app
 const app = express();
 
+// get a specific course - tested with postman
+router.route("/:id").get((req, res) => {
+  Course.find({ courseid: req.params.id })
+    .then((course) => res.json(course))
+    .catch((err) => res.status(400).json("Error: " + err));
+
+  console.log("Testing a route");
+  console.log(req.params.id);
+});
+
 // retrieve all questions - tested with postman
 router.route("/").get((req, res) => {
   Course.find()
     .then((courses) => res.json(courses))
     .catch((err) => res.status(400).json("Error: " + err));
+  console.log("Testing a route2");
+  console.log(req.params.id);
 });
 
 router.route("/count").get((req, res) => {
@@ -31,14 +43,6 @@ router.route("/count").get((req, res) => {
   });
 });
 
-// get a specific course - tested with postman
-router.route("/:id").get((req, res) => {
-  Course.findById(req.params.id)
-    .then((course) => res.json(course))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
-
 //insert a new question - tested with postman
 router.route("/").post((req, res) => {
   const courseid = req.body.courseid;
@@ -50,7 +54,7 @@ router.route("/").post((req, res) => {
     courseid,
     title,
     description,
-    instructor
+    instructor,
   });
 
   newCourse

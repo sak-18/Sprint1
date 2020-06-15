@@ -17,7 +17,13 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+  useParams,
+} from "react-router-dom";
 
 // styles for this kit
 import "./assets/css/bootstrap.min.css";
@@ -48,7 +54,7 @@ ReactDOM.render(
           render={(props) => <LandingPage {...props} />}
         />
         <Route
-          path="/courses/ISF341"
+          path="/courses/:courseId"
           render={(props) => <CourseHomePage {...props} />}
         />
         <Route

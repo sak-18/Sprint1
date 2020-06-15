@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import {
+  withRouter,
+  Route,
+  Switch,
+  useRouteMatch,
+  useParams,
+} from "react-router-dom";
 
 // reactstrap components
 import {
@@ -24,7 +30,7 @@ import Review from "../../components/Utils/Review.js";
 import Reviews from "../../components/Utils/Reviews.js";
 import { getDecodedToken, checkToken } from "../../utils/jwt";
 import { Redirect } from "react-router-dom";
-
+import { axios } from "axios";
 class CourseHome extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +40,29 @@ class CourseHome extends Component {
       authenticated: checkToken(),
     };
   }
-  componentDidMount() {}
+  async componentDidMount() {
+    const url = "/routes/courses/" + this.props.match.params.courseId;
+    console.log(url);
+    //const courses = (await axios.get(url)).data;
+    //console.log(courses);
+
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          courseid: data[0].courseid,
+          title: data[0].title,
+          instructor: data[0].instructor,
+          description: data[0].description,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   render() {
     if (!this.state.authenticated) {
       return <Redirect to="/index" />;
@@ -43,24 +71,15 @@ class CourseHome extends Component {
         <>
           <ExamplesNavbar />
           <div className="wrapper">
-            <CourseHomeHeader />
+            <CourseHomeHeader
+              courseid={this.state.courseid}
+              instructor={this.state.instructor}
+              title={this.state.title}
+            />
             <div className="section">
               <Container>
                 <h3 className="title">Course Description</h3>
-                <h5 className="description">
-                  This course provides the knowledge and skills necessary to
-                  effectively participate and contribute to project teams in
-                  software development following a suitable methodology. The
-                  main objective of this course is to offer widely used software
-                  development methodologies so that the students will be able to
-                  select an appropriate software process model and architecture
-                  for a given type of development project, and to make students
-                  build a software system in small teams adhering to a widely
-                  used agile methodology by practicing relevant techniques
-                  pertaining to activities such as requirements elicitation and
-                  analysis, requirements modeling and specification, software
-                  development, testing and project management.
-                </h5>
+                <h5 className="description">{this.state.description}</h5>
                 <Route
                   exact
                   path={`/courses/ISF341/add-review`}
@@ -81,4 +100,4 @@ class CourseHome extends Component {
     }
   }
 }
-export default CourseHome;
+export default withRouter(CourseHome);

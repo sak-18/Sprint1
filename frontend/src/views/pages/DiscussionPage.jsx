@@ -26,7 +26,7 @@ class SelectCourse extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://localhost:4000/routes/courses")
+    fetch("/routes/courses")
       .then((response) => {
         return response.json();
       })

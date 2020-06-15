@@ -1,4 +1,4 @@
-import React, {  Component, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { getDecodedToken } from "../../utils/jwt";
 import Answers from "./Answers";
@@ -9,11 +9,10 @@ class Question extends Component {
     this.user = getDecodedToken();
     this.state = {
       question: null,
-      postedby:"Anonymous Student",
+      postedby: "Anonymous Student",
       answer: "",
     };
   }
-
   async componentDidMount() {
     await this.refreshQuestion();
   }
@@ -34,7 +33,6 @@ class Question extends Component {
       question,
     });
   }
-
 
   async submitAnswer() {
     this.setState({
@@ -65,7 +63,6 @@ class Question extends Component {
     this.props.history.push("/discussion-page");
   }
 
-
   render() {
     const {
       match: { params },
@@ -81,46 +78,44 @@ class Question extends Component {
             <p className="lead">{question.description}</p>
             <hr className="my-4" />
             <Fragment>
-            <div className="form-group text-center">
-              <label htmlFor="exampleInputEmail1">Answer:</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  this.updateAnswer(e.target.value);
+              <div className="form-group text-center">
+                <label htmlFor="exampleInputEmail1">Answer:</label>
+                <input
+                  type="text"
+                  onChange={(e) => {
+                    this.updateAnswer(e.target.value);
+                  }}
+                  className="form-control"
+                  placeholder="Share your answer."
+                  value={this.state.answer}
+                />
+              </div>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  this.submitAnswer();
                 }}
-                className="form-control"
-                placeholder="Share your answer."
-                value={this.state.answer}
-              />
-            </div>
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                this.submitAnswer();
-              }}
-            >
-              Submit
-            </button>
+              >
+                Submit
+              </button>
 
-            <br/>
+              <br />
 
-            <button
-              disabled={this.state.disabled}
-              className="btn btn-primary"
-              onClick={() => {
-                this.submitAnswerAnonymously();
-              }}
-            >
-              Submit Anonymously
-            </button>
-            <hr className="my-4" />
+              <button
+                disabled={this.state.disabled}
+                className="btn btn-primary"
+                onClick={() => {
+                  this.submitAnswerAnonymously();
+                }}
+              >
+                Submit Anonymously
+              </button>
+              <hr className="my-4" />
             </Fragment>
             <p>Answers:</p>
-            <Answers questionId={qid}/>
-            
-              {/* a list of all answers here  */}
+            <Answers questionId={qid} />
 
-
+            {/* a list of all answers here  */}
 
             {/* {question.answers.map((answer, idx) => (
               <p className="lead" key={idx}>
