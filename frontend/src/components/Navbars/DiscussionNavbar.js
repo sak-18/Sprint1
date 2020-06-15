@@ -119,12 +119,7 @@ function DiscussionNavbar() {
               </NavItem>
             </Nav>
           </Collapse>
-          <img
-              src={logo}
-              height="30"
-              className="d-inline-block align-top"
-              alt="BITSians For Each Other"
-            />
+          
           <NavDropdown
             title={ getDecodedToken().name }
             id="collasible-nav-dropdown"
