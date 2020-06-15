@@ -1,0 +1,35 @@
+{
+  "name": "Project-SE(sprint1)",
+  "version": "1.0.0",
+  "description": "![Now UI Kit React](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/now-ui-kit-react/opt_nuk_react_thumbnail.jpg)",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js ",
+    "dev": "concurrently \"cd backend && npm run start\" \"cd frontend && npm run start\" ",
+    "heroku-postbuild": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "dependencies": {
+    "concurrently": "^5.1.0",
+    "cookie-session": "^1.4.0",
+    "passport": "^0.4.1",
+    "react-google-login": "^5.1.20"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sak-18/Sprint1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sak-18/Sprint1/issues"
+  },
+  "homepage": "https://github.com/sak-18/Sprint1#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
