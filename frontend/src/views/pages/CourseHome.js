@@ -82,15 +82,25 @@ class CourseHome extends Component {
                 <h5 className="description">{this.state.description}</h5>
                 <Route
                   exact
-                  path={`/courses/ISF341/add-review`}
-                  component={AddReview}
+                  path={`/courses/` + this.state.courseid + `/add-review`}
+                  render={(props) => (
+                    <AddReview {...props} courseid={this.state.courseid} />
+                  )}
                 />
                 <Route
                   exact
-                  path={`/courses/ISF341/Review/:reviewId`}
-                  component={Review}
+                  path={`/courses/` + this.state.courseid + `/Review/:reviewId`}
+                  render={(props) => (
+                    <Review {...props} courseid={this.state.courseid} />
+                  )}
                 />
-                <Route exact path={`/courses/ISF341`} component={Reviews} />
+                <Route
+                  exact
+                  path={`/courses/` + this.state.courseid}
+                  render={(props) => (
+                    <Reviews {...props} courseid={this.state.courseid} />
+                  )}
+                />
               </Container>
             </div>
             <DefaultFooter />

@@ -5,29 +5,27 @@ class Review extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      review: null
+      review: null,
+      courseid: props.courseid,
     };
-}
+  }
 
   async componentDidMount() {
     await this.refreshReview();
   }
 
-
   async refreshReview() {
     const {
-      match: { params }
+      match: { params },
     } = this.props;
-    var url_2="/routes/reviews/" + String(params.reviewId);
+    var url_2 =
+      "/routes/reviews/" + this.state.courseid + "/" + String(params.reviewId);
     console.log(url_2);
-    const review = (
-      await axios.get(url_2)
-    ).data;
+    const review = (await axios.get(url_2)).data;
     this.setState({
       review,
     });
   }
-  
 
   render() {
     const { review } = this.state;
