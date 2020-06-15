@@ -35,7 +35,7 @@ import RegisterPage from "./views/pages/RegisterPage.js";
 import LandingPage from "./views/pages/LandingPage.js";
 import CourseHomePage from "./views/pages/CourseHome.js";
 
-// import AdminPage from "./views/pages/AdminPage.js";
+import AdminPage from "./views/pages/AdminPage.js";
 import AddCoursePage from "./views/pages/AddCoursePage.js";
 import DiscussionPage from "./views/pages/DiscussionPage.jsx";
 ReactDOM.render(
@@ -59,10 +59,10 @@ ReactDOM.render(
           path="/login-page"
           render={(props) => <LoginPage {...props} />}
         />
-        {/* <Route
+        <Route
           path="/admin-page"
           render={(props) => <AdminPage {...props} />}
-        /> */}
+        />
         <Route
           path="/addcourse-page"
           render={(props) => <AddCoursePage {...props} />}

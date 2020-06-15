@@ -21,8 +21,8 @@ function AdminPage() {
   return (
     <div>
       <AdminNavbar />
-      {/* <Dashboard /> */}
-      {/* <Route exact path={`${match.path}/new-course`} component={NewCourse} /> */}
+      <Dashboard />
+      <Route exact path={`${match.path}/new-course`} component={NewCourse} />
     </div>
   );
 }
