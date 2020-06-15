@@ -1,10 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
-
-import { getDecodedToken } from "../../utils/jwt";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import logo from "../../assets/img/logo.png";
 // reactstrap components
 import {
   Collapse,
@@ -21,8 +16,8 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
-function ExamplesNavbar() {
-  const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
+function DiscussionNavbar() {
+  const [navbarColor, setNavbarColor] = React.useState("blue");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   React.useEffect(() => {
     const updateNavbarColor = () => {
@@ -30,12 +25,12 @@ function ExamplesNavbar() {
         document.documentElement.scrollTop > 399 ||
         document.body.scrollTop > 399
       ) {
-        setNavbarColor("");
+        setNavbarColor("lightblue");
       } else if (
         document.documentElement.scrollTop < 400 ||
         document.body.scrollTop < 400
       ) {
-        setNavbarColor("navbar-transparent");
+        setNavbarColor("blue");
       }
     };
     window.addEventListener("scroll", updateNavbarColor);
@@ -119,22 +114,6 @@ function ExamplesNavbar() {
                 </NavLink>
               </NavItem>
             </Nav>
-            
-            <NavDropdown
-              title={ getDecodedToken().name }
-              id="collasible-nav-dropdown"
-            >
-              
-              <LinkContainer to="/logout">
-                <NavDropdown.Item>Logout</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
-            <img
-              src={logo}
-              height="30"
-              className="d-inline-block align-top"
-              alt="BITSians For Each Other"
-            />
           </Collapse>
         </Container>
       </Navbar>
@@ -142,4 +121,4 @@ function ExamplesNavbar() {
   );
 }
 
-export default ExamplesNavbar;
+export default DiscussionNavbar;

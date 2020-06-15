@@ -7,7 +7,6 @@
 require("dotenv").config();
 require("../backend/passport");
 require("../backend/models/User");
-require("../backend/models/Student");
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
