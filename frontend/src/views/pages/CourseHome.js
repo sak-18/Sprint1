@@ -34,6 +34,7 @@ class CourseHome extends Component {
       authenticated: checkToken(),
     };
   }
+  componentDidMount() {}
   render() {
     if (!this.state.authenticated) {
       return <Redirect to="/index" />;

@@ -59,10 +59,7 @@ ReactDOM.render(
           path="/login-page"
           render={(props) => <LoginPage {...props} />}
         />
-        <Route
-          path="/logout"
-          render={(props) => <Logout {...props} />}
-        />
+        <Route path="/logout" render={(props) => <Logout {...props} />} />
         <Route
           path="/admin-page"
           render={(props) => <AdminPage {...props} />}
