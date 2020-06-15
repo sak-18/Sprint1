@@ -14,6 +14,12 @@ var UserSchema = new Schema({
   },
   photo: {
     type: String,
+<<<<<<< HEAD
+=======
+    default:
+      "https://res.cloudinary.com/geekysrm/image/upload/v1542221619/default-user.png",
+    // required: true,
+>>>>>>> 71fba5b83503d214699380a83ba814c4632108f8
   },
   registration_date: {
       type: Date,

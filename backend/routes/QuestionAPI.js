@@ -25,6 +25,19 @@ router.route("/").get((req, res) => {
 
 // get a specific question - tested with postman
 router.route("/:id").get((req, res) => {
+<<<<<<< HEAD
+=======
+  /*  
+  Question.find()
+    .then(questions => res.json(questions))
+    .catch(err => res.status(400).json("Error: " + err));
+
+  const question = questions.filter(q => q._id === parseInt(req.params.id));
+  if (question.length > 1) return res.status(500).send();
+  if (question.length === 0) return res.status(404).send();
+  res.send(question[0]);
+*/
+>>>>>>> 71fba5b83503d214699380a83ba814c4632108f8
   Question.findById(req.params.id)
     .then((question) => res.json(question))
     .catch((err) => res.status(400).json("Error: " + err));
@@ -34,22 +47,54 @@ router.route("/:id").get((req, res) => {
 router.route("/").post((req, res) => {
   const title = req.body.title;
   const description = req.body.description;
+<<<<<<< HEAD
   const postedby = req.body.postedby;
+=======
+>>>>>>> 71fba5b83503d214699380a83ba814c4632108f8
   const answers = [];
 
   const newQuestion = new Question({
     title,
     description,
+<<<<<<< HEAD
     postedby,
     answers
   });
+=======
+    answers,
+  });
+
+>>>>>>> 71fba5b83503d214699380a83ba814c4632108f8
   newQuestion
     .save()
     .then(() => res.json("Question added!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+<<<<<<< HEAD
 router.route("/answer/:id").post((req, res) => {
+=======
+//http://localhost:4000/${params.questionId}
+// insert a new answer to a question -to be tested with postman
+//problem here
+router.route("/answer/:id").post((req, res) => {
+  /*
+  Question.update(req.params.id)
+    .then(question => {
+      question.description = req.body.description;
+      question.title = req.body.title;
+      question.answers = question.answers.push(req.body.answer);
+      console.log(question.answers[0]);
+      question
+        .save()
+        .then(() => res.json(question.answers[0])) //answers addded
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+    */
+  //console.log(req.body);
+  //console.log(typeof req.body.answer);
+>>>>>>> 71fba5b83503d214699380a83ba814c4632108f8
   Question.findById(req.params.id)
     .then((question) => {
       question.answers.push(req.body.answer);

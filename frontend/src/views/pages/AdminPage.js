@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
-
 import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
 import Dashboard from "../../components/Utils/Dashboard.js";
 import NewCourse from "../../components/Utils/NewCourse.js";

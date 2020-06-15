@@ -21,7 +21,6 @@ class NewQuestion extends Component {
     });
   }
 
-
   updateTitle(value) {
     this.setState({
       title: value,

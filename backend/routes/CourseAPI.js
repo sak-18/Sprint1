@@ -31,13 +31,29 @@ router.route("/count").get((req, res) => {
   });
 });
 
+<<<<<<< HEAD
 // get a specific course - tested with postman
 router.route("/:id").get((req, res) => {
+=======
+// get a specific question - tested with postman
+router.route("/:id").get((req, res) => {
+  /*  
+  Question.find()
+    .then(questions => res.json(questions))
+    .catch(err => res.status(400).json("Error: " + err));
+
+  const question = questions.filter(q => q._id === parseInt(req.params.id));
+  if (question.length > 1) return res.status(500).send();
+  if (question.length === 0) return res.status(404).send();
+  res.send(question[0]);
+*/
+>>>>>>> 71fba5b83503d214699380a83ba814c4632108f8
   Course.findById(req.params.id)
     .then((course) => res.json(course))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+<<<<<<< HEAD
 
 //insert a new question - tested with postman
 router.route("/").post((req, res) => {
@@ -51,6 +67,18 @@ router.route("/").post((req, res) => {
     title,
     description,
     instructor
+=======
+//insert a new question - tested with postman
+router.route("/").post((req, res) => {
+  const title = req.body.title;
+  const description = req.body.description;
+  const ratings = 5;
+
+  const newCourse = new Course({
+    title,
+    description,
+    ratings,
+>>>>>>> 71fba5b83503d214699380a83ba814c4632108f8
   });
 
   newCourse
