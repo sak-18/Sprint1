@@ -10,6 +10,8 @@ class NewCourse extends Component {
       disabled: false,
       title: "",
       description: "",
+      courseid:"",
+      instructor:"",
     };
   }
 
@@ -18,7 +20,16 @@ class NewCourse extends Component {
       description: value,
     });
   }
-
+  updateinstructor(value) {
+    this.setState({
+      instructor: value,
+    });
+  }
+  updatecourseid(value) {
+    this.setState({
+      courseid: value,
+    });
+  }
   updateTitle(value) {
     this.setState({
       title: value,
@@ -32,6 +43,8 @@ class NewCourse extends Component {
 
     await axios.post("/routes/courses", {
       // ********************CHANGED "http://localhost:4000" WORKING
+      courseid: this.state.courseid,
+      instructor:this.state.instructor,
       title: this.state.title,
       description: this.state.description,
     });
@@ -47,6 +60,18 @@ class NewCourse extends Component {
             <div className="card border-primary">
               <div className="card-header">New Course</div>
               <div className="card-body text-left">
+              <div className="form-group">
+                  <label htmlFor="exampleInputEmail1">courseid:</label>
+                  <input
+                    disabled={this.state.disabled}
+                    type="text"
+                    onBlur={(e) => {
+                      this.updatecourseid(e.target.value);
+                    }}
+                    className="form-control"
+                    placeholder="Enter CourseID"
+                  />
+                </div>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Title:</label>
                   <input
@@ -69,6 +94,19 @@ class NewCourse extends Component {
                     }}
                     className="form-control"
                     placeholder="Give more description of the course"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="exampleInputEmail1">Instructor:</label>
+                  <input
+                    disabled={this.state.disabled}
+                    type="text"
+                    onBlur={(e) => {
+                      this.updateinstructor(e.target.value);
+                    }}
+                    className="form-control"
+                    placeholder="Who is the instructor?"
                   />
                 </div>
                 <button
