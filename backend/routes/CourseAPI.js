@@ -13,15 +13,16 @@ const jwksRsa = require("jwks-rsa");
 
 // define the Express app
 const app = express();
+const auth = require('../middleware/auth');
 
 // retrieve all questions - tested with postman
-router.route("/").get((req, res) => {
+router.route("/").get( (req, res) => {
   Course.find()
     .then((courses) => res.json(courses))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/count").get((req, res) => {
+router.route("/count").get( (req, res) => {
   Course.countDocuments({}, (err, count) => {
     if (err) {
       res.status(500).send({ status: false, error: err });
@@ -32,7 +33,7 @@ router.route("/count").get((req, res) => {
 });
 
 // get a specific course - tested with postman
-router.route("/:id").get((req, res) => {
+router.route("/:id").get( (req, res) => {
   Course.findById(req.params.id)
     .then((course) => res.json(course))
     .catch((err) => res.status(400).json("Error: " + err));
@@ -40,7 +41,7 @@ router.route("/:id").get((req, res) => {
 
 
 //insert a new question - tested with postman
-router.route("/").post((req, res) => {
+router.route("/").post( (req, res) => {
   const courseid = req.body.courseid;
   const instructor = req.body.instructor;
   const title = req.body.title;

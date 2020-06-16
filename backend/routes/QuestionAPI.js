@@ -17,21 +17,21 @@ const auth = require('../middleware/auth');
 const app = express();
 
 // retrieve all questions - tested with postman
-router.route("/").get((req, res) => {
+router.route("/").get( (req, res) => {
   Question.find()
     .then((questions) => res.json(questions))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 // get a specific question - tested with postman
-router.route("/:id").get((req, res) => {
+router.route("/:id").get( (req, res) => {
   Question.findById(req.params.id)
     .then((question) => res.json(question))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //insert a new question - tested with postman
-router.route("/").post((req, res) => {
+router.route("/").post( (req, res) => {
   const title = req.body.title;
   const description = req.body.description;
   const postedby = req.body.postedby;
@@ -49,7 +49,7 @@ router.route("/").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/answer/:id").post((req, res) => {
+router.route("/answer/:id").post( (req, res) => {
   Question.findById(req.params.id)
     .then((question) => {
       question.answers.push(req.body.answer);

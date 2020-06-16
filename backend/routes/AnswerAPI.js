@@ -18,14 +18,14 @@ const app = express();
 
 
 // get answers for a specific question - tested with postman
-router.route("/:id").get((req, res) => {
+router.route("/:id").get( (req, res) => {
     Answer.find({ questionid: req.params.id })
     .then((answer) => res.json(answer))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //insert a new answer - tested with postman
-router.route("/:id").post((req, res) => {
+router.route("/:id").post( (req, res) => {
   const questionid = req.params.id;
   const answer = req.body.answer;
   const postedby = req.body.postedby;
