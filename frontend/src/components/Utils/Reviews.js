@@ -110,7 +110,6 @@ class Reviews extends Component {
               <div key={review._id} className="col-sm-12 col-md-10 col-lg-12">
                 <Link to={`/courses/${this.props.courseid}/review/${review._id}`}>
                   <div className="card text-dark shadow p-4 mb-3 bg-light">
-                    
                     <div className="card-body">
                     <div key={review._id} className="container">
                       <Container>
