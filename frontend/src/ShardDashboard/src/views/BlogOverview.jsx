@@ -72,8 +72,8 @@ BlogOverview.propTypes = {
 BlogOverview.defaultProps = {
   smallStats: [
     {
-      label: "Posts",
-      value: "2,390",
+      label: "Questions Posted",
+      value: "2,39",
       percentage: "4.7%",
       increase: true,
       chartLabels: [null, null, null, null, null, null, null],
@@ -90,7 +90,7 @@ BlogOverview.defaultProps = {
       ],
     },
     {
-      label: "Pages",
+      label: "Answers",
       value: "182",
       percentage: "12.4",
       increase: true,
@@ -108,8 +108,8 @@ BlogOverview.defaultProps = {
       ],
     },
     {
-      label: "Comments",
-      value: "8,147",
+      label: "Courses",
+      value: "22",
       percentage: "3.8%",
       increase: false,
       decrease: true,
@@ -127,8 +127,8 @@ BlogOverview.defaultProps = {
       ],
     },
     {
-      label: "New Customers",
-      value: "29",
+      label: "Reviews",
+      value: "820",
       percentage: "2.71%",
       increase: false,
       decrease: true,
@@ -146,8 +146,8 @@ BlogOverview.defaultProps = {
       ],
     },
     {
-      label: "Subscribers",
-      value: "17,281",
+      label: "Users",
+      value: "172",
       percentage: "2.4%",
       increase: false,
       decrease: true,

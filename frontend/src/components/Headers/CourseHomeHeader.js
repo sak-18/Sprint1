@@ -5,7 +5,7 @@ import { Container } from "reactstrap";
 
 // core components
 
-function CourseHomeHeader() {
+function CourseHomeHeader(props) {
   let pageHeader = React.createRef();
 
   React.useEffect(() => {
@@ -30,15 +30,16 @@ function CourseHomeHeader() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("../../assets/img/back2.jpg") + ")"
+            backgroundImage:
+              "url(" + require("../../assets/img/back2.jpg") + ")",
           }}
           ref={pageHeader}
         ></div>
         <Container>
-          
-          <h3 className="title">ISF341- Software Engineering</h3>
-          <p className="category">Prof. Narasimha Bolluju</p>
-          
+          <h3 className="title">
+            {props.courseid} - {props.title}
+          </h3>
+          <p className="category">{props.instructor}</p>
         </Container>
       </div>
     </>

@@ -10,34 +10,33 @@ class AddReview extends Component {
     this.state = {
       disabled: false,
       title: "",
-      courseid:"ISF341",
-      postedby:"Anonymous Student",
+      courseid: props.courseid,
+      postedby: "Anonymous Student",
       description: "",
     };
-    
   }
 
   updatecourseid(value) {
     this.setState({
-      courseid: value
+      courseid: value,
     });
   }
   updateDescription(value) {
     this.setState({
-      description: value
+      description: value,
     });
   }
   updateTitle(value) {
     this.setState({
-      title: value
+      title: value,
     });
   }
-  updateRating(value){
-      this.setState({
-          rating: value
-      });
+  updateRating(value) {
+    this.setState({
+      rating: value,
+    });
   }
-  
+
   async submitAnonymously() {
     this.setState({
       disabled: true,
@@ -50,10 +49,9 @@ class AddReview extends Component {
       description: this.state.description,
       rating: this.state.rating,
     });
-    this.props.history.push("/courses/ISF341");
+    this.props.history.push("/courses/" + this.state.courseid);
   }
 
-  
   async submit() {
     this.setState({
       disabled: true,
@@ -66,10 +64,9 @@ class AddReview extends Component {
       description: this.state.description,
       rating: this.state.rating,
     });
-    this.props.history.push("/courses/ISF341");
+    this.props.history.push("/courses/" + this.state.courseid);
   }
 
-  
   render() {
     return (
       <div className="container">
@@ -83,7 +80,7 @@ class AddReview extends Component {
                   <input
                     disabled={this.state.disabled}
                     type="text"
-                    onBlur={e => {
+                    onBlur={(e) => {
                       this.updateTitle(e.target.value);
                     }}
                     className="form-control"
@@ -95,7 +92,7 @@ class AddReview extends Component {
                   <input
                     disabled={this.state.disabled}
                     type="text"
-                    onBlur={e => {
+                    onBlur={(e) => {
                       this.updateDescription(e.target.value);
                     }}
                     className="form-control"
@@ -107,7 +104,7 @@ class AddReview extends Component {
                   <input
                     disabled={this.state.disabled}
                     type="Number"
-                    onBlur={e => {
+                    onBlur={(e) => {
                       this.updateRating(e.target.value);
                     }}
                     className="form-control"
@@ -124,7 +121,7 @@ class AddReview extends Component {
                   Submit
                 </button>
 
-                <br/>
+                <br />
 
                 <button
                   disabled={this.state.disabled}
@@ -145,25 +142,3 @@ class AddReview extends Component {
 }
 
 export default withRouter(AddReview);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
