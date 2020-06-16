@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import { Route, useRouteMatch } from "react-router-dom";
 import axios from "axios";
 // reactstrap components
@@ -15,78 +17,8 @@ import Questions from "../../components/Utils/Questions.js";
 import Question from "../../components/Utils/Question.js";
 import NotFound from "../../components/Utils/NotFound.js";
 import { getDecodedToken, checkToken } from "../../utils/jwt";
-
-class SelectCourse extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      courses: [],
-      selectedCourse: "",
-      validationError: "",
-    };
-  }
-  componentDidMount() {
-    fetch("/routes/courses")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let CoursesFromApi = data.map((course) => {
-          return { value: course.courseid, display: course.title };
-        });
-        this.setState({
-          courses: [
-            {
-              value: "x",
-              display: "(Select your Course)",
-            },
-          ].concat(CoursesFromApi),
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  render() {
-    return (
-      <div>
-        <Button
-          to={"courses/" + this.state.selectedCourse}
-          color="info"
-          tag={Link}
-          size="lg"
-        >
-          Go to course
-        </Button>
-        <select
-          value={this.state.selectedCourse}
-          onChange={(e) =>
-            this.setState({
-              selectedCourse: e.target.value,
-              validationError:
-                e.target.value === "x" ? "You must select a course" : "",
-            })
-          }
-        >
-          {this.state.courses.map((course) => (
-            <option key={course.value} value={course.value}>
-              {course.display}
-            </option>
-          ))}
-        </select>
-        <div
-          style={{
-            color: "red",
-            marginTop: "5px",
-          }}
-        >
-          {this.state.validationError}
-        </div>
-      </div>
-    );
-  }
-}
+import { Col } from "reactstrap";
+import SeeAll from "./SeeAll";
 
 class DiscussionPage extends Component {
   constructor(props) {
@@ -94,25 +26,67 @@ class DiscussionPage extends Component {
 
     this.user = getDecodedToken();
     this.state = {
+      courses: [],
       authenticated: checkToken(),
     };
   }
+
+  async componentDidMount() {
+    await axios.get("/routes/courses").then(res => {
+      let courses = [];
+      res.data.forEach(course => {
+        courses.push(course);
+      });
+      this.setState({
+        courses,
+      });
+    });
+  }
+
+  
+
+  generateCourseList() {
+    let courses = [];
+    this.state.courses.forEach(course => {
+        courses.push(
+          <Container>
+          <Row >
+          <Button to={"courses/${course.courseid}"} color="info" tag={Link} size="lg">
+            {course.courseid}
+          </Button>
+          </Row>
+          </Container>
+        );
+      }
+    );
+    return <SeeAll items={courses} count={10} name="courses"/>;
+  }
+
+
   render() {
     if (!this.state.authenticated) {
       return <Redirect to="/index" />;
     } else {
       return (
-        <>
-          <div>
-            <DiscussionNavbar />
-            <br />
-            <br />
-            <br />
-            <br />
-            <Button to={"courses/ISF341"} color="info" tag={Link} size="lg">
-              ISF341
-            </Button>
-            <SelectCourse></SelectCourse>
+        <Container>
+        <DiscussionNavbar />  
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <Row>
+          <Col lg="2.5">
+            <Row>
+              <Col>
+                <h5>Courses</h5>
+                <hr />
+                {this.generateCourseList()}
+              </Col>
+            </Row>
+          </Col>
+          <Col lg="9">       
             <Route
               exact
               path={`/discussion-page/new-question`}
@@ -125,10 +99,13 @@ class DiscussionPage extends Component {
             />
             <Route exact path={`/discussion-page`} component={Questions} />
             <Route path="/discussion-page/test" component={NotFound} />
-          </div>
-        </>
+          </Col>
+          
+        </Row>
+      </Container>
       );
     }
   }
 }
 export default DiscussionPage;
+      
