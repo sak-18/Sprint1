@@ -6,6 +6,7 @@ import {
   useRouteMatch,
   useParams,
 } from "react-router-dom";
+import ReactSpeedometer from "react-d3-speedometer";
 
 // reactstrap components
 import {
@@ -57,7 +58,7 @@ class CourseHome extends Component {
           title: data[0].title,
           instructor: data[0].instructor,
           description: data[0].description,
-          courserating: data[0].courserating,
+          averagerating: data[0].averagerating,
           numberofreviews: data[0].numberofreviews,
         });
       })
@@ -82,6 +83,20 @@ class CourseHome extends Component {
               <Container>
                 <h3 className="title">Course Description</h3>
                 <h5 className="description">{this.state.description}</h5>
+                  <Col lg={12} className="pt-5">
+                  <center>
+                  <ReactSpeedometer
+                    maxValue={5}
+                    value={this.state.averagerating}
+                    needleColor="blue"
+                    startColor="green"
+                    endColor="red"
+                    maxSegmentLabels={5}
+                    segments={10}
+                  />
+                   </center> 
+                <center>Course Rating</center>
+                  </Col>
                 <Route
                   exact
                   path={`/courses/` + this.state.courseid + `/add-review`}
