@@ -31,7 +31,7 @@ router.route("/:courseId/:id/").get((req, res) => {
 });
 
 //insert a new review - tested with postman
-router.route("/").post( (req, res) => {
+router.route("/").post((req, res) => {
   const title = req.body.title;
   const courseid = req.body.courseid;
   const description = req.body.description;

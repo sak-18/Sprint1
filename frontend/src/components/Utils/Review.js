@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
+import TimeAgo from "react-timeago";
+
+
+import Container from "react-bootstrap/Container";
+import Collapse from "react-bootstrap/Collapse";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import Button from "react-bootstrap/Button";
 
 class Review extends Component {
   constructor(props) {
@@ -26,7 +35,9 @@ class Review extends Component {
       review,
     });
   }
+  dummy() {
 
+  }
   render() {
     const { review } = this.state;
     if (review === null) return <p>Looks empty here. </p>;
@@ -75,7 +86,7 @@ class Review extends Component {
                                       <Button
                                         variant="info"
                                         size="sm"
-                                        onClick={    this.updateinstructor()   }
+                                        onClick={    this.dummy()     }
                                       >
                                       Report
                                       </Button>

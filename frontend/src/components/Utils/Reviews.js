@@ -92,7 +92,7 @@ class Reviews extends Component {
                                       <Button
                                         variant="info"
                                         size="sm"
-                                        onClick={    this.updateinstructor()   }
+                                        onClick={    this.dummy()   }
                                       >
                                       Report
                                       </Button>
