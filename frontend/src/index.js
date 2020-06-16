@@ -38,7 +38,6 @@ import "./assets/demo/nucleo-icons-page-styles.css";
 import Index from "./views/Index.js";
 import LoginPage from "./views/pages/LoginPage.js";
 import RegisterPage from "./views/pages/RegisterPage.js";
-import LandingPage from "./views/pages/LandingPage.js";
 import CourseHomePage from "./views/pages/CourseHome.js";
 import Logout from "./components/Utils/logout.js";
 import AdminPage from "./views/pages/AdminPage.js";
@@ -49,10 +48,7 @@ ReactDOM.render(
     <Switch>
       <Switch>
         <Route path="/index" render={(props) => <Index {...props} />} />
-        <Route
-          path="/landing-page"
-          render={(props) => <LandingPage {...props} />}
-        />
+        
         <Route
           path="/courses/:courseId"
           render={(props) => <CourseHomePage {...props} />}
