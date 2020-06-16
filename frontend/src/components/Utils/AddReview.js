@@ -13,8 +13,7 @@ class AddReview extends Component {
       title: "",
       courseid: props.courseid,
       postedby: "Anonymous Student",
-      description: "",
-      rating:3,
+      description: ""
     };
   }
   
@@ -43,22 +42,24 @@ class AddReview extends Component {
     this.setState({
       disabled: true,
     });
-  //   const cumulative = this.state.numberofreviews * this.state.courserating;
-  //   cumulative = cumulative + this.state.rating;
-  //   const newaverage = cumulative / (this.state.numberofreviews + 1);
-    
-  //   var url="/routes/courses/"+String(this.props.courseid);
-  //   await axios.put(url, {
-    
-  // })
-  // .then(res => console.log(res.data));
+
     if(this.state.rating>=0 && this.state.rating<=5){
+
+      const pass=Number(this.state.rating);
+      var url="/routes/courses/update/"+String(this.props.courseid);
+      console.log(url);
+      console.log(pass);
+
+      await axios.post(url, {
+        rating: pass
+      });
+
       await axios.post("/routes/reviews", {
         title: this.state.title,
-        courseid: this.state.courseid,
+        courseid: String(this.state.courseid),
         postedby: "Anonymous Student",
         description: this.state.description,
-        rating: this.state.rating,
+        rating: pass
       });
       this.props.history.push("/courses/" + this.state.courseid);
     }
@@ -70,18 +71,31 @@ class AddReview extends Component {
   }
 
   async submit() {
+    this.setState({
+      disabled: true,
+    });
     if(this.state.rating>=0 && this.state.rating<=5){
+      const pass=Number(this.state.rating);
+
+      var url="/routes/courses/update/"+String(this.props.courseid);
+      console.log(url);
+      console.log(pass);
+      await axios.post(url, {
+        rating: pass
+      });
+
       await axios.post("/routes/reviews", {
         title: this.state.title,
-        courseid: this.state.courseid,
+        courseid: String(this.state.courseid),
         postedby: this.user.name,
         description: this.state.description,
-        rating: this.state.rating,
+        rating: pass,
       });
       this.props.history.push("/courses/" + this.state.courseid);
     }
     else{
       window.confirm('Please enter a rating between 0 & 5.');
+
       this.props.history.push("/courses/" + this.state.courseid);
     }
   }

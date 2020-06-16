@@ -86,7 +86,7 @@ class CourseHome extends Component {
                   exact
                   path={`/courses/` + this.state.courseid + `/add-review`}
                   render={(props) => (
-                    <AddReview {...props} courseid={this.state.courseid}  />
+                    <AddReview {...props} courseid={this.state.courseid} />
                   )}
                 />
                 <Route

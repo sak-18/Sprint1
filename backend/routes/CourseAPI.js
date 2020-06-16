@@ -29,8 +29,6 @@ router.route("/").get((req, res) => {
   Course.find()
     .then((courses) => res.json(courses))
     .catch((err) => res.status(400).json("Error: " + err));
-  console.log("Testing a route2");
-  console.log(req.params.id);
 });
 
 router.route("/count").get((req, res) => {
@@ -42,8 +40,27 @@ router.route("/count").get((req, res) => {
     }
   });
 });
+//Update course average rating - tested with postman
+router.route("/update/:id").post((req, res) => {
+  const newRating=req.body.rating;
+  Course.findOne({ courseid: req.params.id })
+    .then(course => {
+      let cumulative= course.averagerating * course.numberofreviews;
+      cumulative=cumulative+newRating;
+      let updatedrating = cumulative/(course.numberofreviews+1);
+      
+      course.averagerating=updatedrating;
+      course.numberofreviews = course.numberofreviews+1;
+      console.log(course);
+      course
+        .save()
+        .then(() => res.json("Course rating updated!"))
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
 
-//insert a new question - tested with postman
+//insert a new course - tested with postman
 router.route("/").post((req, res) => {
   const courseid = req.body.courseid;
   const instructor = req.body.instructor;
@@ -64,7 +81,7 @@ router.route("/").post((req, res) => {
 });
 
 //http://localhost:4000/${params.questionId}
-// insert a new answer to a question -to be tested with postman
+// insert a new answer to a course -to be tested with postman
 //problem here
 
 module.exports = router;
