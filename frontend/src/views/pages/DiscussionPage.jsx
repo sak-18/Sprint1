@@ -51,9 +51,13 @@ class DiscussionPage extends Component {
         courses.push(
           <Container>
           <Row >
-          <Button to={"courses/${course.courseid}"} color="info" tag={Link} size="lg">
-            {course.courseid}
-          </Button>
+          <Link to={`/courses/${course.courseid}`}>
+          <div lassName="card text-dark shadow p-4 bg-light">
+            <Button color="info"  size="lg">
+              {course.courseid}
+            </Button>
+          </div>
+          </Link>
           </Row>
           </Container>
         );
