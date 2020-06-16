@@ -44,7 +44,6 @@ class RegisterPage extends Component {
             failed: true,
           });
         }
-        this.props.setRouterToken(token);
         this.setState({ authenticated: true });
       });
     };

@@ -49,12 +49,14 @@ class LoginPage extends Component {
       console.log(mail);
       getToken(mail, (err, token) => {
         if (err) {
+          console.log(err);
           return this.setState({
             failed: true,
           });
         }
-        this.props.setRouterToken(token);
+        // this.props.setRouterToken(token);
         this.setState({ authenticated: true });
+        // return <Redirect to="/discussion-page" />;
       });
     };
     let googleFailure = (data) => {
@@ -97,6 +99,12 @@ class LoginPage extends Component {
                           cookiePolicy={"single_host_origin"}
                         />
                       </div>
+                      {  this.state.authenticated ? <Redirect to="/discussion-page" /> : <font color="red">
+                        {this.state.failed
+                          ? "Please Refresh this page to go forward"
+                          : ""}
+                      </font>
+                      }
                       <Button
                         className="btn-neutral btn-round"
                         color="info"
@@ -106,11 +114,7 @@ class LoginPage extends Component {
                         Admin Login
                       </Button>
                     </CardBody>
-                    <font color="red">
-                      {this.state.failed
-                        ? "Please Refresh this page to go forward"
-                        : ""}
-                    </font>
+                    
                     <CardFooter className="text-center">
                       <div margin="0px" className="pull-left">
                         <h6>
