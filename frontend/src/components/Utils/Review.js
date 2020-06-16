@@ -32,14 +32,89 @@ class Review extends Component {
     if (review === null) return <p>Looks empty here. </p>;
     return (
       <div className="container">
-        <div className="row">
-          <div className="jumbotron col-12">
-            <h1 className="display-3">{review.title}</h1>
-            <p className="lead">{review.description}</p>
-            <p className="lead">{review.rating}</p>
-            <hr className="my-4" />
-          </div>
-        </div>
+        <div className="card text-dark shadow p-4 mb-3 bg-light">
+                    
+                    <div className="card-body">
+                    <div key={review._id} className="container">
+                      <Container>
+                        <Row>
+                          <Col lg={4} style={{ marginBottom: "auto", marginTop: "auto" }}>
+                            <Row>
+                              <Col lg={4}>
+                                
+                                  <Button variant="success" size="lg" block disabled>
+                                    {review.rating}
+                                  </Button>
+                              </Col>
+                              
+                            </Row>
+                          </Col>
+                          <Col lg={8}>
+                            <Row>
+                              <Col style={{ wordWrap: "break-word" }}>
+                              <h3 className="card-title">{review.title}</h3>
+                              <h4 className="card-text">{review.description}</h4>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col lg={7}>
+                                <Row>
+                                  <Col>
+                                    
+                                      <p>Submitted by {review.postedby}</p>
+                                      <small className="text-muted">
+                                      <TimeAgo date={review.time} />
+                                    </small>
+                                  </Col>
+                                </Row>
+
+
+                                <Row>
+                                  <Col>
+                                    <small className="text-muted">
+                                      <Button
+                                        variant="info"
+                                        size="sm"
+                                        onClick={    this.updateinstructor()   }
+                                      >
+                                      Report
+                                      </Button>
+                                    </small>
+                                  </Col>
+                                </Row>
+
+
+                                
+                              </Col>
+
+
+                              {/* <Col lg={5}>
+                                <ToggleButtonGroup
+                                >
+                                  <ToggleButton
+                                    value="up"
+                                    variant="outline-success"
+                                    size="sm"
+                                  >
+                                    Upvote ({this.state.review.upvotes})
+                                  </ToggleButton>
+                                  <ToggleButton
+                                    value="down"
+                                    variant="outline-danger"
+                                    size="sm"
+                                  >
+                                    Downvote ({this.state.review.downvotes})
+                                  </ToggleButton>
+                                </ToggleButtonGroup>
+                              </Col> */}
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Container>
+                    </div>
+
+                    </div>
+                  </div>
       </div>
     );
   }

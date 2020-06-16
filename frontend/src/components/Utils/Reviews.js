@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import axios from "axios";
+import TimeAgo from "react-timeago";
 
+
+import Container from "react-bootstrap/Container";
+import Collapse from "react-bootstrap/Collapse";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import Button from "react-bootstrap/Button";
 class Reviews extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +18,9 @@ class Reviews extends Component {
       courseid: props.courseid,
     };
   }
+  dummy() {
 
+  }
   async componentDidMount() {
     const reviews = (await axios.get("/routes/reviews/" + this.state.courseid))
       .data;
@@ -37,21 +47,94 @@ class Reviews extends Component {
           {this.state.reviews === null && <p>Looks Empty in here!</p>}
           {this.state.reviews &&
             this.state.reviews.map((review) => (
-              <div key={review._id} className="col-sm-12 col-md-6 col-lg-4">
-                <Link
-                  to={
-                    `/courses/` + this.state.courseid + `/review/${review._id}`
-                  }
-                >
+              <div key={review._id} className="col-sm-12 col-md-10 col-lg-12">
+                <Link to={`/courses/ISF341/review/${review._id}`}>
                   <div className="card text-dark shadow p-4 mb-3 bg-light">
+                    
                     <div className="card-body">
-                      <h4 className="card-title">{review.title}</h4>
-                      <p className="card-text">{review.description}</p>
-                      <p className="card-text">{review.rating}</p>
+                    <div key={review._id} className="container">
+                      <Container>
+                        <Row>
+                          <Col lg={4} style={{ marginBottom: "auto", marginTop: "auto" }}>
+                            <Row>
+                              <Col lg={4}>
+                                
+                                  <Button variant="success" size="lg" block disabled>
+                                    {review.rating}
+                                  </Button>
+                              </Col>
+                              
+                            </Row>
+                          </Col>
+                          <Col lg={8}>
+                            <Row>
+                              <Col style={{ wordWrap: "break-word" }}>
+                              <h3 className="card-title">{review.title}</h3>
+                              <h4 className="card-text">{review.description}</h4>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col lg={7}>
+                                <Row>
+                                  <Col>
+                                    
+                                      <p>Submitted by {review.postedby}</p>
+                                      <small className="text-muted">
+                                      <TimeAgo date={review.time} />
+                                    </small>
+                                  </Col>
+                                </Row>
+
+
+                                <Row>
+                                  <Col>
+                                    <small className="text-muted">
+                                      <Button
+                                        variant="info"
+                                        size="sm"
+                                        onClick={    this.updateinstructor()   }
+                                      >
+                                      Report
+                                      </Button>
+                                    </small>
+                                  </Col>
+                                </Row>
+
+
+                                
+                              </Col>
+
+
+                              {/* <Col lg={5}>
+                                <ToggleButtonGroup
+                                >
+                                  <ToggleButton
+                                    value="up"
+                                    variant="outline-success"
+                                    size="sm"
+                                  >
+                                    Upvote ({this.state.review.upvotes})
+                                  </ToggleButton>
+                                  <ToggleButton
+                                    value="down"
+                                    variant="outline-danger"
+                                    size="sm"
+                                  >
+                                    Downvote ({this.state.review.downvotes})
+                                  </ToggleButton>
+                                </ToggleButtonGroup>
+                              </Col> */}
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Container>
+                    </div>
+
                     </div>
                   </div>
                 </Link>
               </div>
+              
             ))}
         </div>
       </div>
