@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
 import axios from "axios";
 import { getDecodedToken } from "../../utils/jwt";
 
@@ -13,9 +14,10 @@ class AddReview extends Component {
       courseid: props.courseid,
       postedby: "Anonymous Student",
       description: "",
+      rating:3,
     };
   }
-
+  
   updatecourseid(value) {
     this.setState({
       courseid: value,
@@ -41,30 +43,38 @@ class AddReview extends Component {
     this.setState({
       disabled: true,
     });
+    if(this.state.rating>=0 && this.state.rating<=5){
+      await axios.post("/routes/reviews", {
+        title: this.state.title,
+        courseid: this.state.courseid,
+        postedby: "Anonymous Student",
+        description: this.state.description,
+        rating: this.state.rating,
+      });
+      this.props.history.push("/courses/" + this.state.courseid);
+    }
+    else{
+      window.confirm('Please enter a rating between 0 & 5.');
 
-    await axios.post("/routes/reviews", {
-      title: this.state.title,
-      courseid: this.state.courseid,
-      postedby: "Anonymous Student",
-      description: this.state.description,
-      rating: this.state.rating,
-    });
-    this.props.history.push("/courses/" + this.state.courseid);
+      this.props.history.push("/courses/" + this.state.courseid);
+    }
   }
 
   async submit() {
-    this.setState({
-      disabled: true,
-    });
-
-    await axios.post("/routes/reviews", {
-      title: this.state.title,
-      courseid: this.state.courseid,
-      postedby: this.user.name,
-      description: this.state.description,
-      rating: this.state.rating,
-    });
-    this.props.history.push("/courses/" + this.state.courseid);
+    if(this.state.rating>=0 && this.state.rating<=5){
+      await axios.post("/routes/reviews", {
+        title: this.state.title,
+        courseid: this.state.courseid,
+        postedby: this.user.name,
+        description: this.state.description,
+        rating: this.state.rating,
+      });
+      this.props.history.push("/courses/" + this.state.courseid);
+    }
+    else{
+      window.confirm('Please enter a rating between 0 & 5.');
+      this.props.history.push("/courses/" + this.state.courseid);
+    }
   }
 
   render() {
@@ -72,6 +82,7 @@ class AddReview extends Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
+          
             <div className="card border-primary">
               <div className="card-header">Add Review</div>
               <div className="card-body text-left">
