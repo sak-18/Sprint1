@@ -57,6 +57,8 @@ class CourseHome extends Component {
           title: data[0].title,
           instructor: data[0].instructor,
           description: data[0].description,
+          courserating: data[0].courserating,
+          numberofreviews: data[0].numberofreviews,
         });
       })
       .catch((error) => {
@@ -84,7 +86,7 @@ class CourseHome extends Component {
                   exact
                   path={`/courses/` + this.state.courseid + `/add-review`}
                   render={(props) => (
-                    <AddReview {...props} courseid={this.state.courseid} />
+                    <AddReview {...props} courseid={this.state.courseid}  />
                   )}
                 />
                 <Route

@@ -33,7 +33,7 @@ router.post('/', (req,res) => {
                       photo: user.photo,
                     },
                     process.env.JWT_SECRET,
-                    {expiresIn: 600},
+                    {expiresIn: 6000},
                     (err,token) => {
                         if(err) throw err;
                         res.json({

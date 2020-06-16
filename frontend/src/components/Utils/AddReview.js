@@ -43,6 +43,15 @@ class AddReview extends Component {
     this.setState({
       disabled: true,
     });
+  //   const cumulative = this.state.numberofreviews * this.state.courserating;
+  //   cumulative = cumulative + this.state.rating;
+  //   const newaverage = cumulative / (this.state.numberofreviews + 1);
+    
+  //   var url="/routes/courses/"+String(this.props.courseid);
+  //   await axios.put(url, {
+    
+  // })
+  // .then(res => console.log(res.data));
     if(this.state.rating>=0 && this.state.rating<=5){
       await axios.post("/routes/reviews", {
         title: this.state.title,

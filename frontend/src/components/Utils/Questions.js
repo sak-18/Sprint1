@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import axios from "axios";
+import { get, groupBy, pick, sortBy } from "lodash";
 
-
+import ButtonToolbar from "react-bootstrap/ButtonGroup";
+import ToggleButton from "react-bootstrap/ToggleButton";
 import TimeAgo from "react-timeago";
 
 
@@ -23,6 +25,7 @@ class Questions extends Component {
   dummy() {
 
   }
+ 
   async componentDidMount() {
     const questions = (await axios.get("/routes/questions")).data; // WORKING********************CHANGED "http://localhost:4000/"
     this.setState({
@@ -51,6 +54,54 @@ class Questions extends Component {
             </div>
           </div>
         </Link>
+        <p> Sort By </p>
+        <small className="text-muted">
+          Default: Most recent last
+        </small>
+        <br/>
+        
+        {this.state.questions ? (
+          <ButtonToolbar style={{ marginBottom: "5px", marginLeft: "10px" }}>
+            <ToggleButtonGroup
+              type="radio"
+              name="options"
+              size="sm"
+              defaultValue={2}
+              onChange={value => {
+                let questions = [...this.state.questions];
+                let sortFunc = param => (a, b) => {
+                  if (get(a, param) === get(b, param)) return 0;
+                  return get(a, param) > get(b, param) ? -1 : 1;
+                };
+                questions.sort(sortFunc("time"));
+                switch (value) {
+                  case 1: {
+                    questions.sort(sortFunc("time"));
+                    break;
+                  }
+                  case 2: {
+                    questions.sort(sortFunc("upvotes"));
+                    break;
+                  }
+                  
+                  default: {
+                    questions.sort(sortFunc("time"));
+                    break;
+                  }
+                }
+                this.setState({ questions: questions });
+              }}
+            >
+              <ToggleButton variant="outline-primary" value={1}>
+                Most Recent
+              </ToggleButton>
+              <ToggleButton variant="outline-primary" value={2}>
+                Most Upvoted
+              </ToggleButton>
+              
+            </ToggleButtonGroup>
+          </ButtonToolbar>
+        ) : null}
         <div className="row">
           {this.state.questions === null && <p>Loading questions...</p>}
           {this.state.questions &&
