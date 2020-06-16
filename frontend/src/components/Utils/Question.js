@@ -74,8 +74,8 @@ class Question extends Component {
       <div className="container">
         <div className="row">
           <div className="jumbotron col-12">
-            <h1 className="display-3">{question.title}</h1>
-            <p className="lead">{question.description}</p>
+            <h1 >{question.title}</h1>
+            <h2 >{question.description}</h2>
             <hr className="my-4" />
             <Fragment>
               <div className="form-group text-center">
@@ -112,7 +112,7 @@ class Question extends Component {
               </button>
               <hr className="my-4" />
             </Fragment>
-            <p>Answers:</p>
+            <h2>Answers:</h2>
             <Answers questionId={qid} />
 
             {/* a list of all answers here  */}
