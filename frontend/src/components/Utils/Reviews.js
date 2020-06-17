@@ -122,7 +122,7 @@ class Reviews extends Component {
                           <Link to={`/courses/${this.props.courseid}/review/${review._id}`}>
                           <div className="card text-dark  p-4 mb-3 bg-light">
                           <Row>
-                            <Col
+                          <Col
                               style={{
                                 marginBottom: "auto",
                                 marginTop: "auto",
@@ -159,37 +159,35 @@ class Reviews extends Component {
                         </Col>
                       </Row>
                       <Row>
-                            <Col
-                              style={{
-                                marginBottom: "auto",
-                                marginTop: "auto",
-                              }}
-                            >
-                              <Row>
-                                <Col>
-                                <Button
-                                  variant="info"
-                                  size="sm"
-                                  onClick={    this.dummy()   }
-                                >
-                                  Report
-                                </Button>
-                                </Col>
-                              </Row>
-                            </Col>
-                        <Col>
-                            <button
-                                disabled={this.state.disabled}
-                                className="btn btn-primary"
-                                onClick={() => {
-                                  var url="/routes/reviews/upvote/"+String(review._id);
-                                  axios.post(url, {
-                                    email: this.user.email,
-                                  });
-                                }}
-                              >
-                                Upvote ({review.upvotedby.length})
-                            </button>
+                        <div class="col">
+                          <small className="text-muted">
+                            <Button
+                                        variant="info"
+                                        size="sm"
+                                        onClick={    this.dummy()   }
+                                      >
+                                      Report
+                                      </Button>
+                                    </small>
+                                  </div>
+                              <div class="row">
+                                  
+                                  <div class="row right-content-end">
+                                  <Col >
+                                    <button
+                                      disabled={this.state.disabled}
+                                      className="btn btn-primary"
+                                      onClick={() => {
+                                        var url="/routes/reviews/upvote/"+String(review._id);
+                                        axios.post(url, {
+                                          email: this.user.email,
+                                        });
+                                      }}
+                                    >
+                                      Upvote ({review.upvotedby.length})
+                                    </button>
+                                  </Col>
+                                  <Col>
                                     <button
                                       disabled={this.state.disabled}
                                       className="btn btn-primary"
@@ -203,12 +201,19 @@ class Reviews extends Component {
                                       Downvote ({review.downvotedby.length})
                                     </button>
                                   </Col>
-                      </Row>
+                                  </div>
+                                  
+                                </div>
+                            </Row>
+                          {/* </Col> */}
+                        
                       </Container>
                     </div>
+
+                    </div>
                   </div>
-                </div>
               </div>
+              
             ))}
         </div>
       </div>

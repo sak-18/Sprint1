@@ -8,7 +8,7 @@ import {
   ButtonGroup,
   Button,
   Row,
-  Col
+  Col,
 } from "shards-react";
 
 const Discussions = ({ title, discussions }) => (
@@ -41,44 +41,10 @@ const Discussions = ({ title, discussions }) => (
 
             {/* Content :: Body */}
             <p className="m-0 my-1 mb-2 text-muted">{discussion.body}</p>
-
-            {/* Content :: Actions */}
-            <div className="blog-comments__actions">
-              <ButtonGroup size="sm">
-                <Button theme="white">
-                  <span className="text-success">
-                    <i className="material-icons">check</i>
-                  </span>{" "}
-                  Approve
-                </Button>
-                <Button theme="white">
-                  <span className="text-danger">
-                    <i className="material-icons">clear</i>
-                  </span>{" "}
-                  Reject
-                </Button>
-                <Button theme="white">
-                  <span className="text-light">
-                    <i className="material-icons">more_vert</i>
-                  </span>{" "}
-                  Edit
-                </Button>
-              </ButtonGroup>
-            </div>
           </div>
         </div>
       ))}
     </CardBody>
-
-    <CardFooter className="border-top">
-      <Row>
-        <Col className="text-center view-report">
-          <Button theme="white" type="submit">
-            View All Comments
-          </Button>
-        </Col>
-      </Row>
-    </CardFooter>
   </Card>
 );
 
@@ -90,55 +56,55 @@ Discussions.propTypes = {
   /**
    * The discussions dataset.
    */
-  discussions: PropTypes.array
+  discussions: PropTypes.array,
 };
 
 Discussions.defaultProps = {
-  title: "Discussions",
+  title: "Trending Posts",
   discussions: [
     {
       id: 1,
       date: "3 days ago",
       author: {
         image: require("../../images/avatars/1.jpg"),
-        name: "John Doe",
-        url: "#"
+        name: "Anonymous",
+        url: "#",
       },
       post: {
-        title: "Hello World!",
-        url: "#"
+        title: "Computer Science career advice",
+        url: "#",
       },
-      body: "Well, the way they make shows is, they make one show ..."
+      body: "Start working on your projects ....",
     },
     {
       id: 2,
       date: "4 days ago",
       author: {
         image: require("../../images/avatars/2.jpg"),
-        name: "John Doe",
-        url: "#"
+        name: "Anubhav",
+        url: "#",
       },
       post: {
-        title: "Hello World!",
-        url: "#"
+        title: "Plan for quarantine",
+        url: "#",
       },
-      body: "After the avalanche, it took us a week to climb out. Now..."
+      body: "Will be announcing soon",
     },
     {
       id: 3,
       date: "5 days ago",
       author: {
         image: require("../../images/avatars/3.jpg"),
-        name: "John Doe",
-        url: "#"
+        name: "Anonymous Student",
+        url: "#",
       },
       post: {
-        title: "Hello World!",
-        url: "#"
+        title: "When is the last date for withdrawl of courses",
+        url: "#",
       },
-      body: "My money's in that office, right? If she start giving me..."
-    }
-  ]
+      body: "Deadline has been extended to June 1st week",
+    },
+  ],
 };
 
 export default Discussions;

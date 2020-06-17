@@ -9,9 +9,9 @@ import UsersByDevice from "./../components/blog/UsersByDevice";
 import NewDraft from "./../components/blog/NewDraft";
 import Discussions from "./../components/blog/Discussions";
 import TopReferrals from "./../components/common/TopReferrals";
-//import styles from "../shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
-//import bstyles from "bootstrap/dist/css/bootstrap.min.module.css";
-
+// import styles from "../shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
+// import bstyles from "bootstrap/dist/css/bootstrap.min.module.css";
+import { axios } from "axios";
 const BlogOverview = ({ smallStats }) => (
   <Container fluid className="main-content-container px-4">
     {/* Small Stats Blocks */}
@@ -34,21 +34,6 @@ const BlogOverview = ({ smallStats }) => (
     </Row>
 
     <Row>
-      {/* Users Overview */}
-      <Col lg="8" md="12" sm="12" className="mb-4">
-        <UsersOverview />
-      </Col>
-
-      {/* Users by Device */}
-      <Col lg="4" md="6" sm="12" className="mb-4">
-        <UsersByDevice />
-      </Col>
-
-      {/* New Draft */}
-      <Col lg="4" md="6" sm="12" className="mb-4">
-        <NewDraft />
-      </Col>
-
       {/* Discussions */}
       <Col lg="5" md="12" sm="12" className="mb-4">
         <Discussions />
@@ -57,6 +42,15 @@ const BlogOverview = ({ smallStats }) => (
       {/* Top Referrals */}
       <Col lg="3" md="12" sm="12" className="mb-4">
         <TopReferrals />
+      </Col>
+
+      {/* Users by Device */}
+      <Col lg="4" md="6" sm="12" className="mb-4">
+        <UsersByDevice />
+      </Col>
+      {/* Users Overview */}
+      <Col lg="8" md="12" sm="12" className="mb-4">
+        <UsersOverview />
       </Col>
     </Row>
   </Container>
