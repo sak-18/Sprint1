@@ -20,12 +20,9 @@ class Reviews extends Component {
       courseid: props.courseid,
     };
   }
-  dummy() {
+  dummy() {}
 
-  }
- 
   async componentDidMount() {
-    
     const reviews = (await axios.get("/routes/reviews/" + this.state.courseid))
       .data;
     this.setState({
@@ -47,13 +44,11 @@ class Reviews extends Component {
             </div>
           </div>
         </Link>
-        
+
         <p> Sort By </p>
-        <small className="text-muted">
-          Default: Most recent last
-        </small>
-        <br/>
-        
+        <small className="text-muted">Default: Most recent last</small>
+        <br />
+
         {this.state.reviews ? (
           <ButtonToolbar style={{ marginBottom: "5px", marginLeft: "10px" }}>
             <ToggleButtonGroup
@@ -61,9 +56,9 @@ class Reviews extends Component {
               name="options"
               size="sm"
               defaultValue={2}
-              onChange={value => {
+              onChange={(value) => {
                 let reviews = [...this.state.reviews];
-                let sortFunc = param => (a, b) => {
+                let sortFunc = (param) => (a, b) => {
                   if (get(a, param) === get(b, param)) return 0;
                   return get(a, param) > get(b, param) ? -1 : 1;
                 };
@@ -81,7 +76,7 @@ class Reviews extends Component {
                     reviews.sort(sortFunc("rating"));
                     break;
                   }
-                  
+
                   default: {
                     reviews.sort(sortFunc("time"));
                     break;
@@ -99,7 +94,6 @@ class Reviews extends Component {
               <ToggleButton variant="outline-primary" value={3}>
                 Rating
               </ToggleButton>
-              
             </ToggleButtonGroup>
           </ButtonToolbar>
         ) : null}
@@ -108,63 +102,70 @@ class Reviews extends Component {
           {this.state.reviews &&
             this.state.reviews.map((review) => (
               <div key={review._id} className="col-sm-12 col-md-10 col-lg-12">
-                <Link to={`/courses/${this.props.courseid}/review/${review._id}`}>
+                <Link
+                  to={`/courses/${this.props.courseid}/review/${review._id}`}
+                >
                   <div className="card text-dark shadow p-4 mb-3 bg-light">
                     <div className="card-body">
-                    <div key={review._id} className="container">
-                      <Container>
-                        <Row>
-                          <Col lg={4} style={{ marginBottom: "auto", marginTop: "auto" }}>
-                            <Row>
-                              <Col lg={4}>
-                                
-                                  <Button variant="success" size="lg" block disabled>
+                      <div key={review._id} className="container">
+                        <Container>
+                          <Row>
+                            <Col
+                              lg={4}
+                              style={{
+                                marginBottom: "auto",
+                                marginTop: "auto",
+                              }}
+                            >
+                              <Row>
+                                <Col lg={4}>
+                                  <Button
+                                    variant="success"
+                                    size="lg"
+                                    block
+                                    disabled
+                                  >
                                     {review.rating}
                                   </Button>
-                              </Col>
-                              
-                            </Row>
-                          </Col>
-                          <Col lg={8}>
-                            <Row>
-                              <Col style={{ wordWrap: "break-word" }}>
-                              <h3 className="card-title">{review.title}</h3>
-                              <h4 className="card-text">{review.description}</h4>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col lg={7}>
-                                <Row>
-                                  <Col>
-                                    
+                                </Col>
+                              </Row>
+                            </Col>
+                            <Col lg={8}>
+                              <Row>
+                                <Col style={{ wordWrap: "break-word" }}>
+                                  <h3 className="card-title">{review.title}</h3>
+                                  <h4 className="card-text">
+                                    {review.description}
+                                  </h4>
+                                </Col>
+                              </Row>
+                              <Row>
+                                <Col lg={7}>
+                                  <Row>
+                                    <Col>
                                       <p>Submitted by {review.postedby}</p>
                                       <small className="text-muted">
-                                      <TimeAgo date={review.time} />
-                                    </small>
-                                  </Col>
-                                </Row>
+                                        <TimeAgo date={review.time} />
+                                      </small>
+                                    </Col>
+                                  </Row>
 
+                                  <Row>
+                                    <Col>
+                                      <small className="text-muted">
+                                        <Button
+                                          variant="info"
+                                          size="sm"
+                                          onClick={this.dummy()}
+                                        >
+                                          Report
+                                        </Button>
+                                      </small>
+                                    </Col>
+                                  </Row>
+                                </Col>
 
-                                <Row>
-                                  <Col>
-                                    <small className="text-muted">
-                                      <Button
-                                        variant="info"
-                                        size="sm"
-                                        onClick={    this.dummy()   }
-                                      >
-                                      Report
-                                      </Button>
-                                    </small>
-                                  </Col>
-                                </Row>
-
-
-                                
-                              </Col>
-
-
-                              {/* <Col lg={5}>
+                                {/* <Col lg={5}>
                                 <ToggleButtonGroup
                                 >
                                   <ToggleButton
@@ -183,17 +184,15 @@ class Reviews extends Component {
                                   </ToggleButton>
                                 </ToggleButtonGroup>
                               </Col> */}
-                            </Row>
-                          </Col>
-                        </Row>
-                      </Container>
-                    </div>
-
+                              </Row>
+                            </Col>
+                          </Row>
+                        </Container>
+                      </div>
                     </div>
                   </div>
                 </Link>
               </div>
-              
             ))}
         </div>
       </div>

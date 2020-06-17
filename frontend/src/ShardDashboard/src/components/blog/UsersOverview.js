@@ -17,16 +17,16 @@ class UsersOverview extends React.Component {
       ...{
         responsive: true,
         legend: {
-          position: "top"
+          position: "top",
         },
         elements: {
           line: {
             // A higher value makes the line look skewed at this ratio.
-            tension: 0.3
+            tension: 0.3,
           },
           point: {
-            radius: 0
-          }
+            radius: 0,
+          },
         },
         scales: {
           xAxes: [
@@ -36,9 +36,9 @@ class UsersOverview extends React.Component {
                 callback(tick, index) {
                   // Jump every 7 values on the X axis labels to avoid clutter.
                   return index % 7 !== 0 ? "" : tick;
-                }
-              }
-            }
+                },
+              },
+            },
           ],
           yAxes: [
             {
@@ -50,28 +50,28 @@ class UsersOverview extends React.Component {
                   }
                   // Format the amounts using Ks for thousands.
                   return tick > 999 ? `${(tick / 1000).toFixed(1)}K` : tick;
-                }
-              }
-            }
-          ]
+                },
+              },
+            },
+          ],
         },
         hover: {
           mode: "nearest",
-          intersect: false
+          intersect: false,
         },
         tooltips: {
           custom: false,
           mode: "nearest",
-          intersect: false
-        }
+          intersect: false,
+        },
       },
-      ...this.props.chartOptions
+      ...this.props.chartOptions,
     };
 
     const BlogUsersOverview = new Chart(this.canvasRef.current, {
       type: "LineWithLine",
       data: this.props.chartData,
-      options: chartOptions
+      options: chartOptions,
     });
 
     // They can still be triggered on hover.
@@ -93,19 +93,6 @@ class UsersOverview extends React.Component {
           <h6 className="m-0">{title}</h6>
         </CardHeader>
         <CardBody className="pt-0">
-          <Row className="border-bottom py-2 bg-light">
-            <Col sm="6" className="d-flex mb-2 mb-sm-0">
-              <RangeDatePicker />
-            </Col>
-            <Col>
-              <Button
-                size="sm"
-                className="d-flex btn-white ml-auto mr-auto ml-sm-auto mr-sm-0 mt-3 mt-sm-0"
-              >
-                View Full Report &rarr;
-              </Button>
-            </Col>
-          </Row>
           <canvas
             height="120"
             ref={this.canvasRef}
@@ -129,7 +116,7 @@ UsersOverview.propTypes = {
   /**
    * The Chart.js options.
    */
-  chartOptions: PropTypes.object
+  chartOptions: PropTypes.object,
 };
 
 UsersOverview.defaultProps = {
@@ -170,7 +157,7 @@ UsersOverview.defaultProps = {
           3400,
           2910,
           3100,
-          4250
+          4250,
         ],
         backgroundColor: "rgba(0,123,255,0.1)",
         borderColor: "rgba(0,123,255,1)",
@@ -178,7 +165,7 @@ UsersOverview.defaultProps = {
         pointHoverBackgroundColor: "rgb(0,123,255)",
         borderWidth: 1.5,
         pointRadius: 0,
-        pointHoverRadius: 3
+        pointHoverRadius: 3,
       },
       {
         label: "Past Month",
@@ -213,7 +200,7 @@ UsersOverview.defaultProps = {
           630,
           720,
           780,
-          1200
+          1200,
         ],
         backgroundColor: "rgba(255,65,105,0.1)",
         borderColor: "rgba(255,65,105,1)",
@@ -223,10 +210,10 @@ UsersOverview.defaultProps = {
         borderWidth: 1,
         pointRadius: 0,
         pointHoverRadius: 2,
-        pointBorderColor: "rgba(255,65,105,1)"
-      }
-    ]
-  }
+        pointBorderColor: "rgba(255,65,105,1)",
+      },
+    ],
+  },
 };
 
 export default UsersOverview;

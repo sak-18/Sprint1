@@ -31,33 +31,48 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/count").get((req, res) => {
-  Course.countDocuments({}, (err, count) => {
+//tested with postman
+router.route("/desc/sort").get((req, res) => {
+  Course.find({}, (err, count) => {
     if (err) {
       res.status(500).send({ status: false, error: err });
     } else {
       res.status(200).send({ courses: count });
     }
+  }).sort({ averagerating: -1 });
+});
+
+//tested with postman
+router.route("/cum/count").get((req, res) => {
+  Course.countDocuments({}, (err, count) => {
+    if (err) {
+      //console.log("thuu");
+      res.status(500).send({ status: false, error: err });
+    } else {
+      //console.log("hahaha");
+      res.status(200).send({ courses: count });
+    }
   });
 });
+
 //Update course average rating - tested with postman
 router.route("/update/:id").post((req, res) => {
-  const newRating=req.body.rating;
+  const newRating = req.body.rating;
   Course.findOne({ courseid: req.params.id })
-    .then(course => {
-      let cumulative= course.averagerating * course.numberofreviews;
-      cumulative=cumulative+newRating;
-      let updatedrating = cumulative/(course.numberofreviews+1);
-      
-      course.averagerating=updatedrating;
-      course.numberofreviews = course.numberofreviews+1;
+    .then((course) => {
+      let cumulative = course.averagerating * course.numberofreviews;
+      cumulative = cumulative + newRating;
+      let updatedrating = cumulative / (course.numberofreviews + 1);
+
+      course.averagerating = updatedrating;
+      course.numberofreviews = course.numberofreviews + 1;
       console.log(course);
       course
         .save()
         .then(() => res.json("Course rating updated!"))
-        .catch(err => res.status(400).json("Error: " + err));
+        .catch((err) => res.status(400).json("Error: " + err));
     })
-    .catch(err => res.status(400).json("Error: " + err));
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //insert a new course - tested with postman

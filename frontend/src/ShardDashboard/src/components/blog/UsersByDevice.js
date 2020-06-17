@@ -7,7 +7,7 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter
+  CardFooter,
 } from "shards-react";
 
 import Chart from "../../utils/chart";
@@ -29,18 +29,18 @@ class UsersByDevice extends React.Component {
             position: "bottom",
             labels: {
               padding: 25,
-              boxWidth: 20
-            }
+              boxWidth: 20,
+            },
           },
           cutoutPercentage: 0,
           tooltips: {
             custom: false,
             mode: "index",
-            position: "nearest"
-          }
+            position: "nearest",
+          },
         },
-        ...this.props.chartOptions
-      }
+        ...this.props.chartOptions,
+      },
     };
 
     new Chart(this.canvasRef.current, chartConfig);
@@ -102,25 +102,31 @@ UsersByDevice.propTypes = {
   /**
    * The chart data.
    */
-  chartData: PropTypes.object
+  chartData: PropTypes.object,
 };
 
 UsersByDevice.defaultProps = {
-  title: "Users by device",
+  title: "Trending Topics",
   chartData: {
     datasets: [
       {
         hoverBorderColor: "#ffffff",
-        data: [68.3, 24.2, 7.5],
+        data: [38.3, 30, 24.2, 7.5],
         backgroundColor: [
           "rgba(0,123,255,0.9)",
           "rgba(0,123,255,0.5)",
-          "rgba(0,123,255,0.3)"
-        ]
-      }
+          "rgba(0,123,255,0.3)",
+          "rgba(0,123,255,0.1)",
+        ],
+      },
     ],
-    labels: ["Desktop", "Tablet", "Mobile"]
-  }
+    labels: [
+      "Course related queries",
+      "Lockdown Guidelines for students",
+      "Career advices",
+      "Others",
+    ],
+  },
 };
 
 export default UsersByDevice;
