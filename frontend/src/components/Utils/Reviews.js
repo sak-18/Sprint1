@@ -12,9 +12,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Button from "react-bootstrap/Button";
+
+
+import { getDecodedToken } from "../../utils/jwt";
+
 class Reviews extends Component {
   constructor(props) {
     super(props);
+    this.user = getDecodedToken();
     this.state = {
       reviews: null,
       courseid: props.courseid,
@@ -23,7 +28,7 @@ class Reviews extends Component {
   dummy() {
 
   }
- 
+
   async componentDidMount() {
     
     const reviews = (await axios.get("/routes/reviews/" + this.state.courseid))
@@ -108,92 +113,102 @@ class Reviews extends Component {
           {this.state.reviews &&
             this.state.reviews.map((review) => (
               <div key={review._id} className="col-sm-12 col-md-10 col-lg-12">
-                <Link to={`/courses/${this.props.courseid}/review/${review._id}`}>
-                  <div className="card text-dark shadow p-4 mb-3 bg-light">
-                    <div className="card-body">
+                <div className="card text-dark shadow p-4 mb-3 bg-light">
+                  <div className="card-body">
                     <div key={review._id} className="container">
                       <Container>
                         <Row>
-                          <Col lg={4} style={{ marginBottom: "auto", marginTop: "auto" }}>
-                            <Row>
-                              <Col lg={4}>
-                                
-                                  <Button variant="success" size="lg" block disabled>
+                        <Col lg={12}>
+                          <Link to={`/courses/${this.props.courseid}/review/${review._id}`}>
+                          <div className="card text-dark  p-4 mb-3 bg-light">
+                          <Row>
+                            <Col
+                              style={{
+                                marginBottom: "auto",
+                                marginTop: "auto",
+                              }}
+                            >
+                              <Row>
+                                <Col>
+                                  <Button
+                                    variant="success"
+                                    size="lg"
+                                    block
+                                    disabled
+                                  >
                                     {review.rating}
                                   </Button>
-                              </Col>
-                              
-                            </Row>
-                          </Col>
-                          <Col lg={8}>
-                            <Row>
-                              <Col style={{ wordWrap: "break-word" }}>
-                              <h3 className="card-title">{review.title}</h3>
-                              <h4 className="card-text">{review.description}</h4>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col lg={7}>
-                                <Row>
-                                  <Col>
-                                    
-                                      <p>Submitted by {review.postedby}</p>
-                                      <small className="text-muted">
-                                      <TimeAgo date={review.time} />
-                                    </small>
-                                  </Col>
-                                </Row>
-
-
-                                <Row>
-                                  <Col>
-                                    <small className="text-muted">
-                                      <Button
-                                        variant="info"
-                                        size="sm"
-                                        onClick={    this.dummy()   }
-                                      >
-                                      Report
-                                      </Button>
-                                    </small>
-                                  </Col>
-                                </Row>
-
-
-                                
-                              </Col>
-
-
-                              {/* <Col lg={5}>
-                                <ToggleButtonGroup
+                                </Col>
+                              </Row>
+                            </Col>
+                            <Col lg={10}>
+                              {/* <Row> 
+                               <Col style={{ wordWrap: "break-word" }}> */}
+                                <h3 className="card-title">{review.title}</h3>
+                                <h4 className="card-text">{review.description}</h4>
+                                <p>Submitted by {review.postedby}</p>
+                                  <small className="text-muted">
+                                    <TimeAgo date={review.time} />
+                                  </small>
+                                {/* </Col> 
+                                 </Row> */}
+                            </Col>
+                          </Row>
+                          </div>
+                          </Link>
+                        </Col>
+                      </Row>
+                      <Row>
+                            <Col
+                              style={{
+                                marginBottom: "auto",
+                                marginTop: "auto",
+                              }}
+                            >
+                              <Row>
+                                <Col>
+                                <Button
+                                  variant="info"
+                                  size="sm"
+                                  onClick={    this.dummy()   }
                                 >
-                                  <ToggleButton
-                                    value="up"
-                                    variant="outline-success"
-                                    size="sm"
-                                  >
-                                    Upvote ({this.state.review.upvotes})
-                                  </ToggleButton>
-                                  <ToggleButton
-                                    value="down"
-                                    variant="outline-danger"
-                                    size="sm"
-                                  >
-                                    Downvote ({this.state.review.downvotes})
-                                  </ToggleButton>
-                                </ToggleButtonGroup>
-                              </Col> */}
-                            </Row>
-                          </Col>
-                        </Row>
+                                  Report
+                                </Button>
+                                </Col>
+                              </Row>
+                            </Col>
+                        <Col>
+                            <button
+                                disabled={this.state.disabled}
+                                className="btn btn-primary"
+                                onClick={() => {
+                                  var url="/routes/reviews/upvote/"+String(review._id);
+                                  axios.post(url, {
+                                    email: this.user.email,
+                                  });
+                                }}
+                              >
+                                Upvote ({review.upvotedby.length})
+                            </button>
+                                    <button
+                                      disabled={this.state.disabled}
+                                      className="btn btn-primary"
+                                      onClick={() => {
+                                        var url="/routes/reviews/downvote/"+String(review._id);
+                                        axios.post(url, {
+                                          email: this.user.email,
+                                        });
+                                      }}
+                                    >
+                                      Downvote ({review.downvotedby.length})
+                                    </button>
+                                  </Col>
+                      </Row>
                       </Container>
                     </div>
-
-                    </div>
                   </div>
-                </Link>
+                </div>
               </div>
-              
             ))}
         </div>
       </div>

@@ -12,8 +12,8 @@ var QuestionSchema = new Schema({
   description: { type: String, required: true },
   postedby: { type: String, required: false },
   answers: [{ type: String, required: false }],
-  upvotes: [{type:String, required:false}],
-  downvotes: [{type:String, required:false}],
+  upvotedby: [{ type: String, required: false }],
+  downvotedby: [{type:String, required:false}],
   time: {
     type: Date,
     default:Date.now

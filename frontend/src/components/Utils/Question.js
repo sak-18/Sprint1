@@ -2,6 +2,18 @@ import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { getDecodedToken } from "../../utils/jwt";
 import Answers from "./Answers";
+import TimeAgo from "react-timeago";
+import { Link, useRouteMatch } from "react-router-dom";
+
+
+import Container from "react-bootstrap/Container";
+import Collapse from "react-bootstrap/Collapse";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import Button from "react-bootstrap/Button";
+
 
 class Question extends Component {
   constructor(props) {
@@ -12,6 +24,9 @@ class Question extends Component {
       postedby: "Anonymous Student",
       answer: "",
     };
+  }
+  dummy() {
+
   }
   async componentDidMount() {
     await this.refreshQuestion();
@@ -74,9 +89,88 @@ class Question extends Component {
       <div className="container">
         <div className="row">
           <div className="jumbotron col-12">
-            <h1 >{question.title}</h1>
-            <h2 >{question.description}</h2>
-            <hr className="my-4" />
+          <div className="card text-dark shadow p-4 mb-3 bg-light">
+                    
+                    <div className="card-body">
+
+                    <div key={question._id} className="container">
+                      <Container>
+                        <Row>
+                          <Col lg={10}>
+                          <Link to={`/discussion-page/question/${question._id}`}>
+                            <Row>
+                              <Col style={{ wordWrap: "break-word" }}>
+                              <h3 className="card-title">{question.title}</h3>
+                              <h4 className="card-text">{question.description}</h4>
+                              </Col>
+                            </Row>
+                            </Link>
+                            <Row>
+                              <Col lg={7}>
+                                <Row>
+                                  <Col>
+                                      <p>Submitted by {question.postedby}</p>
+                                      <small className="text-muted">
+                                      <TimeAgo date={question.time} />
+                                    </small>
+                                  </Col>
+                                </Row>
+                              </Col>
+                                <div class="row">
+                                  <div class="col">
+                                    <small className="text-muted">
+                                      <Button
+                                        variant="info"
+                                        size="sm"
+                                        onClick={    this.dummy()   }
+                                      >
+                                      Report
+                                      </Button>
+                                    </small>
+                                  </div>
+                                  <div class="row justify-content-end">
+                                  <Col >
+                                    <button
+                                      disabled={this.state.disabled}
+                                      className="btn btn-primary"
+                                      onClick={() => {
+                                        var url="/routes/questions/upvote/"+String(question._id);
+                                        axios.post(url, {
+                                          email: this.user.email,
+                                        });
+                                      }}
+                                    >
+                                      Upvote ({question.upvotedby.length})
+                                    </button>
+                                  </Col>
+                                  <Col>
+                                    <button
+                                      disabled={this.state.disabled}
+                                      className="btn btn-primary"
+                                      onClick={() => {
+                                        var url="/routes/questions/downvote/"+String(question._id);
+                                        axios.post(url, {
+                                          email: this.user.email,
+                                        });
+                                      }}
+                                    >
+                                      Downvote ({question.downvotedby.length})
+                                    </button>
+                                  </Col>
+                                  </div>
+                                  
+                                </div>
+                              
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            
             <Fragment>
               <div className="form-group text-center">
                 <label htmlFor="exampleInputEmail1">Answer:</label>
@@ -124,7 +218,6 @@ class Question extends Component {
             ))} */}
           </div>
         </div>
-      </div>
     );
   }
 }

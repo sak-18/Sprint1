@@ -49,17 +49,84 @@ router.route("/").post( (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/answer/:id").post( (req, res) => {
+
+router.post('/upvote/:id', (req,res) =>{
   Question.findById(req.params.id)
     .then((question) => {
-      question.answers.push(req.body.answer);
+      var isupvoted=false;
+      var isdownvoted=false;
+      var indexd,id;
+      for (id = 0; id < question.downvotedby.length; id++) {
+        if(question.downvotedby[id]=== req.body.email){
+          isdownvoted=true; 
+          indexd=id;
+          break;    
+        }
+      }
+      
+      var index,i;
+      for (i = 0; i < question.upvotedby.length; i++) {
+        if(question.upvotedby[i]=== req.body.email){
+          isupvoted=true; 
+          index=i;
+          break;    
+        }
+      }
+      if(isdownvoted){
+        question.downvotedby.splice(indexd,1);
+        question.upvotedby.push(req.body.email);
+      }
+      if(isupvoted){
+        question.upvotedby.splice(index,1);
+      }
+      if(!isupvoted && !isdownvoted ){
+        question.upvotedby.push(req.body.email);
+      }
       console.log(question);
       question
         .save()
-        .then(() => res.json("Question updated!"))
+        .then(() => res.json("Upvote updated!"))
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
-
+router.post('/downvote/:id', (req,res) =>{
+  Question.findById(req.params.id)
+    .then((question) => {
+      var isupvoted=false;
+      var isdownvoted=false;
+      var indexd,id;
+      for (id = 0; id < question.downvotedby.length; id++) {
+        if(question.downvotedby[id]=== req.body.email){
+          isdownvoted=true; 
+          indexd=id;
+          break;    
+        }
+      }
+      var index,i;
+      for (i = 0; i < question.upvotedby.length; i++) {
+        if(question.upvotedby[i]=== req.body.email){
+          isupvoted=true; 
+          index=i;
+          break;    
+        }
+      }
+      if(isdownvoted){
+        question.downvotedby.splice(index,1);
+      }
+      if(isupvoted){
+        question.upvotedby.splice(index,1);
+        question.downvotedby.push(req.body.email);
+      }
+      if(!isupvoted && !isdownvoted ){
+        question.downvotedby.push(req.body.email);
+      }
+      console.log(question);
+      question
+        .save()
+        .then(() => res.json("Downvote updated!"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 module.exports = router;

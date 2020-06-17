@@ -52,4 +52,83 @@ router.route("/").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.post('/upvote/:id', (req,res) =>{
+  Review.findById(req.params.id)
+    .then((review) => {
+      var isupvoted=false;
+      var isdownvoted=false;
+      var indexd,id;
+      for (id = 0; id < review.downvotedby.length; id++) {
+        if(review.downvotedby[id]=== req.body.email){
+          isdownvoted=true; 
+          indexd=id;
+          break;    
+        }
+      }
+      
+      var index,i;
+      for (i = 0; i < review.upvotedby.length; i++) {
+        if(review.upvotedby[i]=== req.body.email){
+          isupvoted=true; 
+          index=i;
+          break;    
+        }
+      }
+      if(isdownvoted){
+        review.downvotedby.splice(indexd,1);
+        review.upvotedby.push(req.body.email);
+      }
+      if(isupvoted){
+        review.upvotedby.splice(index,1);
+      }
+      if(!isupvoted && !isdownvoted ){
+        review.upvotedby.push(req.body.email);
+      }
+      console.log(review);
+      review
+        .save()
+        .then(() => res.json("Upvote updated!"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+router.post('/downvote/:id', (req,res) =>{
+  Review.findById(req.params.id)
+    .then((review) => {
+      var isupvoted=false;
+      var isdownvoted=false;
+      var indexd,id;
+      for (id = 0; id < review.downvotedby.length; id++) {
+        if(review.downvotedby[id]=== req.body.email){
+          isdownvoted=true; 
+          indexd=id;
+          break;    
+        }
+      }
+      var index,i;
+      for (i = 0; i < review.upvotedby.length; i++) {
+        if(review.upvotedby[i]=== req.body.email){
+          isupvoted=true; 
+          index=i;
+          break;    
+        }
+      }
+      if(isdownvoted){
+        review.downvotedby.splice(index,1);
+      }
+      if(isupvoted){
+        review.upvotedby.splice(index,1);
+        review.downvotedby.push(req.body.email);
+      }
+      if(!isupvoted && !isdownvoted ){
+        review.downvotedby.push(req.body.email);
+      }
+      console.log(review);
+      review
+        .save()
+        .then(() => res.json("Downvote updated!"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 module.exports = router;
