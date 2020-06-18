@@ -87,85 +87,81 @@ class Question extends Component {
     if (question === null) return <p>Loading ...</p>;
     return (
       <div className="container">
-        <div className="row">
-          <div className="jumbotron col-12">
-          <div className="card text-dark shadow p-4 mb-3 bg-light">
-                    
-                    <div className="card-body">
-
-                    <div key={question._id} className="container">
-                      <Container>
-                        <Row>
-                          <Col lg={10}>
+        <div key={question._id} className="col-sm-12 col-md-10 col-lg-12">
+                <div className="card text-dark shadow p-4 mb-3 bg-light">
+                  <div className="card-body">
+                    <Container>
+                      <Row>
+                        <Col>
                           <Link to={`/discussion-page/question/${question._id}`}>
-                            <Row>
+                            <div className="card text-dark shadow p-4 mb-3 bg-light">
                               <Col style={{ wordWrap: "break-word" }}>
-                              <h3 className="card-title">{question.title}</h3>
-                              <h4 className="card-text">{question.description}</h4>
+                                <h3 className="card-title">{question.title}</h3>
+                                <h4 className="card-text">{question.description}</h4>
+                                <p>Submitted by {question.postedby}</p>
+                                <small className="text-muted">
+                                  <TimeAgo date={question.time} />
+                                </small>
                               </Col>
-                            </Row>
-                            </Link>
-                            <Row>
-                              <Col lg={7}>
-                                <Row>
-                                  <Col>
-                                      <p>Submitted by {question.postedby}</p>
-                                      <small className="text-muted">
-                                      <TimeAgo date={question.time} />
-                                    </small>
-                                  </Col>
-                                </Row>
-                              </Col>
-                                <div class="row">
-                                  <div class="col">
-                                    <small className="text-muted">
-                                      <Button
-                                        variant="info"
-                                        size="sm"
-                                        onClick={    this.dummy()   }
-                                      >
+                            </div>
+                          </Link>
+
+                          <Row>
+                            <Col
+                              style={{
+                                marginBottom: "auto",
+                                marginTop: "auto",
+                              }}
+                            >
+                              <small className="text-muted">
+                                    <button
+                                      className="info"
+                                      onClick={() => {
+                                        var url="/routes/reports/";
+                                        axios.post(url, {
+                                          contentType:"question",
+                                          identifier:question._id,
+                                          title:question.title,
+                                          description: question.description,
+                                          postedby: question.postedby,
+                                          reportedby:this.user.name
+                                        });
+                                      }}
+                                    >
                                       Report
-                                      </Button>
-                                    </small>
-                                  </div>
-                                  <div class="row justify-content-end">
-                                  <Col >
-                                    <button
-                                      disabled={this.state.disabled}
-                                      className="btn btn-primary"
-                                      onClick={() => {
-                                        var url="/routes/questions/upvote/"+String(question._id);
-                                        axios.post(url, {
-                                          email: this.user.email,
-                                        });
-                                      }}
-                                    >
-                                      Upvote ({question.upvotedby.length})
                                     </button>
-                                  </Col>
-                                  <Col>
-                                    <button
-                                      disabled={this.state.disabled}
-                                      className="btn btn-primary"
-                                      onClick={() => {
-                                        var url="/routes/questions/downvote/"+String(question._id);
-                                        axios.post(url, {
-                                          email: this.user.email,
-                                        });
-                                      }}
-                                    >
-                                      Downvote ({question.downvotedby.length})
-                                    </button>
-                                  </Col>
-                                  </div>
-                                  
-                                </div>
-                              
-                            </Row>
-                          </Col>
-                        </Row>
-                      </Container>
-                    </div>
+                                  </small>
+                            </Col>
+                            <Col>
+                              <button
+                                disabled={this.state.disabled}
+                                className="btn btn-primary"
+                                onClick={() => {
+                                  var url="/routes/questions/upvote/"+String(question._id);
+                                  axios.post(url, {
+                                    email: this.user.email,
+                                  });
+                                }}
+                              >
+                                Upvote ({question.upvotedby.length})
+                              </button>
+                              <button
+                                disabled={this.state.disabled}
+                                className="btn btn-primary"
+                                onClick={() => {
+                                  var url="/routes/questions/downvote/"+String(question._id);
+                                  axios.post(url, {
+                                    email: this.user.email,
+                                  });
+                                }}
+                              >
+                                Downvote ({question.downvotedby.length})
+                              </button>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Container>
                   </div>
                 </div>
               </div>
@@ -184,6 +180,8 @@ class Question extends Component {
                   value={this.state.answer}
                 />
               </div>
+              <hr/>
+              <Col>
               <button
                 className="btn btn-primary"
                 onClick={() => {
@@ -192,9 +190,6 @@ class Question extends Component {
               >
                 Submit
               </button>
-
-              <br />
-
               <button
                 disabled={this.state.disabled}
                 className="btn btn-primary"
@@ -204,20 +199,12 @@ class Question extends Component {
               >
                 Submit Anonymously
               </button>
+              </Col>
               <hr className="my-4" />
             </Fragment>
             <h2>Answers:</h2>
             <Answers questionId={qid} />
-
-            {/* a list of all answers here  */}
-
-            {/* {question.answers.map((answer, idx) => (
-              <p className="lead" key={idx}>
-                {answer}
-              </p>
-            ))} */}
-          </div>
-        </div>
+      </div>
     );
   }
 }
