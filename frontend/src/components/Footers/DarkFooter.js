@@ -8,7 +8,7 @@ function DarkFooter() {
   return (
     <footer className="footer" data-background-color="black">
       <Container>
-//         <nav>
+{/* //         <nav>
 //           <ul>
 //             <li>
 //               <a
@@ -52,7 +52,7 @@ function DarkFooter() {
 //             Creative Tim
 //           </a>
 //           .
-//         </div>
+//         </div> */}
       </Container>
     </footer>
   );

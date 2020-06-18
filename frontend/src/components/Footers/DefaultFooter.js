@@ -11,7 +11,7 @@ function DefaultFooter() {
     <>
       <footer className="footer footer-default">
         <Container>
-          <nav>
+          {/* <nav>
             <ul>
               <li>
                 <a
@@ -55,7 +55,7 @@ function DefaultFooter() {
               Creative Tim
             </a>
             .
-          </div>
+          </div> */}
         </Container>
       </footer>
     </>
