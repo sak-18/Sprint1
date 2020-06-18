@@ -190,6 +190,7 @@ class Reviews extends Component {
                                         axios.post(url, {
                                           email: this.user.email,
                                         });
+                                        window.location.reload();
                                       }}
                                     >
                                       Upvote ({review.upvotedby.length})
@@ -203,6 +204,7 @@ class Reviews extends Component {
                                         axios.post(url, {
                                           email: this.user.email,
                                         });
+                                        window.location.reload();
                                       }}
                                     >
                                       Downvote ({review.downvotedby.length})

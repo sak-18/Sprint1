@@ -97,7 +97,6 @@ class Review extends Component {
                                           reportedby:this.user.name
                                         });
                                         window.confirm('Reported Successfully');
-                                        this.props.history.push("/courses/" + this.props.courseid);
                                       }}
                                     >
                                       Report

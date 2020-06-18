@@ -61,7 +61,7 @@ class Question extends Component {
       answer: this.state.answer,
     });
 
-    this.props.history.push("/discussion-page");
+    this.props.history.push("/discussion-page/");
   }
   async submitAnswerAnonymously() {
     this.setState({
@@ -75,7 +75,7 @@ class Question extends Component {
       answer: this.state.answer,
     });
 
-    this.props.history.push("/discussion-page");
+    this.props.history.push("/discussion-page/");
   }
 
   render() {
@@ -126,6 +126,7 @@ class Question extends Component {
                                           postedby: question.postedby,
                                           reportedby:this.user.name
                                         });
+                                        window.confirm('Reported Successfully');
                                       }}
                                     >
                                       Report
@@ -141,6 +142,7 @@ class Question extends Component {
                                   axios.post(url, {
                                     email: this.user.email,
                                   });
+                                  window.location.reload();
                                 }}
                               >
                                 Upvote ({question.upvotedby.length})
@@ -153,6 +155,7 @@ class Question extends Component {
                                   axios.post(url, {
                                     email: this.user.email,
                                   });
+                                  window.location.reload();
                                 }}
                               >
                                 Downvote ({question.downvotedby.length})

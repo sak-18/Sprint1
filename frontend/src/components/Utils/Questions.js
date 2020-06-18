@@ -146,6 +146,7 @@ class Questions extends Component {
                                           postedby: question.postedby,
                                           reportedby:this.user.name
                                         });
+                                        window.confirm('Reported Successfully');
                                       }}
                                     >
                                       Report
@@ -161,6 +162,7 @@ class Questions extends Component {
                                   axios.post(url, {
                                     email: this.user.email,
                                   });
+                                  window.location.reload();
                                 }}
                               >
                                 Upvote ({question.upvotedby.length})
@@ -168,11 +170,12 @@ class Questions extends Component {
                               <button
                                 disabled={this.state.disabled}
                                 className="btn btn-primary"
-                                onClick={() => {
+                                onClick={() => { 
                                   var url="/routes/questions/downvote/"+String(question._id);
                                   axios.post(url, {
                                     email: this.user.email,
                                   });
+                                  window.location.reload();
                                 }}
                               >
                                 Downvote ({question.downvotedby.length})
