@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 
 // Creates schema for movie with required attributes and data types
 var ReviewSchema = new Schema({
-  title: { type: String, required: true, unique: true },
+  title: { type: String, required: true},
   courseid: { type:String, required:true},
   description: { type: String, required: true },
   postedby: { type: String, required: true },

@@ -46,21 +46,23 @@ class AddReview extends Component {
     if(this.state.rating>=0 && this.state.rating<=5){
 
       const pass=Number(this.state.rating);
-      var url="/routes/courses/update/"+String(this.props.courseid);
+      var url='/routes/courses/update/'+String(this.props.courseid);
       console.log(url);
       console.log(pass);
 
-      await axios.post(url, {
-        rating: pass
-      });
 
-      await axios.post("/routes/reviews", {
+      await axios.post('/routes/reviews/', {
         title: this.state.title,
         courseid: String(this.state.courseid),
         postedby: "Anonymous Student",
         description: this.state.description,
         rating: pass
       });
+      await axios.post(url, {
+        rating: pass
+      });
+
+      
       this.props.history.push("/courses/" + this.state.courseid);
     }
     else{
@@ -76,7 +78,13 @@ class AddReview extends Component {
     });
     if(this.state.rating>=0 && this.state.rating<=5){
       const pass=Number(this.state.rating);
-
+      await axios.post('/routes/reviews/', {
+        title: this.state.title,
+        courseid: String(this.state.courseid),
+        postedby: this.user.name,
+        description: this.state.description,
+        rating: pass,
+      });
       var url="/routes/courses/update/"+String(this.props.courseid);
       console.log(url);
       console.log(pass);
@@ -84,13 +92,7 @@ class AddReview extends Component {
         rating: pass
       });
 
-      await axios.post("/routes/reviews", {
-        title: this.state.title,
-        courseid: String(this.state.courseid),
-        postedby: this.user.name,
-        description: this.state.description,
-        rating: pass,
-      });
+      
       this.props.history.push("/courses/" + this.state.courseid);
     }
     else{
