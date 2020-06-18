@@ -100,9 +100,7 @@ class LoginPage extends Component {
                         />
                       </div>
                       {  this.state.authenticated ? <Redirect to="/discussion-page" /> : <font color="red">
-                        {this.state.failed
-                          ? "Something went wrong. Try again or register if you haven't registered yet."
-                          : ""}
+                        
                       </font>
                       }
                       <Button
