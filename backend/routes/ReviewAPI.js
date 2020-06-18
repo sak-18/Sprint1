@@ -29,6 +29,11 @@ router.route("/:courseId/:id/").get((req, res) => {
     .then((review) => res.json(review))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+router.route("/").get((req, res) => {
+  Review.find()
+    .then((reviews) => res.json(reviews))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 
 //insert a new review - tested with postman
 router.route("/").post((req, res) => {

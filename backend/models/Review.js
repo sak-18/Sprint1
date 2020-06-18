@@ -17,7 +17,7 @@ var ReviewSchema = new Schema({
   time: {
     type: Date,
     default:Date.now
-  },
+  }, 
   rating: { type: Number, required: false, default: 3 }
 });
 
