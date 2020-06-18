@@ -86,11 +86,7 @@ class RegisterPage extends Component {
                             cookiePolicy={"single_host_origin"}
                           />
                         </div>
-                        <font color="red">
-                          {this.state.failed
-                            ? "Something went wrong. Please try again! "
-                            : ""}
-                        </font>
+                        
                       </CardBody>
                     </Form>
                   </Card>
