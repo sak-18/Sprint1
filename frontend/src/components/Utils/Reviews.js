@@ -119,7 +119,6 @@ class Reviews extends Component {
                       <Container>
                         <Row>
                         <Col lg={12}>
-                          <Link to={`/courses/${this.props.courseid}/review/${review._id}`}>
                           <div className="card text-dark  p-4 mb-3 bg-light">
                           <Row>
                           <Col
@@ -155,7 +154,6 @@ class Reviews extends Component {
                             </Col>
                           </Row>
                           </div>
-                          </Link>
                         </Col>
                       </Row>
                       <Row>
@@ -173,6 +171,8 @@ class Reviews extends Component {
                                           postedby: review.postedby,
                                           reportedby:this.user.name
                                         });
+                                        window.confirm('Reported Successfully');
+                                        this.props.history.push("/courses/" + this.props.courseid);
                                       }}
                                     >
                                       Report

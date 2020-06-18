@@ -24,12 +24,14 @@ router.route("/:courseId").get((req, res) => {
 });
 
 // get a specific review - tested with postman
-router.route("/:courseId/:id/").get((req, res) => {
-  Review.findById(req.params.id)
+router.route("/").get( (req, res) => {
+  Review.findById(req.body.rid)
     .then((review) => res.json(review))
     .catch((err) => res.status(400).json("Error: " + err));
 });
-router.route("/").get((req, res) => {
+
+
+router.route("/getall").get((req, res) => {
   Review.find()
     .then((reviews) => res.json(reviews))
     .catch((err) => res.status(400).json("Error: " + err));

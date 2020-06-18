@@ -27,7 +27,6 @@ import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar.js";
 import CourseHomeHeader from "../../components/Headers/CourseHomeHeader.js";
 import DefaultFooter from "../../components/Footers/DefaultFooter.js";
 import AddReview from "../../components/Utils/AddReview.js";
-import Review from "../../components/Utils/Review.js";
 import Reviews from "../../components/Utils/Reviews.js";
 import { getDecodedToken, checkToken } from "../../utils/jwt";
 import { Redirect } from "react-router-dom";
@@ -104,13 +103,7 @@ class CourseHome extends Component {
                     <AddReview {...props} courseid={this.state.courseid} />
                   )}
                 />
-                <Route
-                  exact
-                  path={`/courses/` + this.state.courseid + `/Review/:reviewId`}
-                  render={(props) => (
-                    <Review {...props} courseid={this.state.courseid} />
-                  )}
-                />
+               
                 <Route
                   exact
                   path={`/courses/` + this.state.courseid}

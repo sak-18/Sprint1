@@ -28,9 +28,11 @@ class Review extends Component {
       match: { params },
     } = this.props;
     var url_2 =
-      "/routes/reviews/" + this.state.courseid + "/" + String(params.reviewId);
+      "/routes/reviews/" ;
     console.log(url_2);
-    const review = (await axios.get(url_2)).data;
+    const review = (await axios.get(url_2, {
+      rid:params.reviewId
+    })).data;
     this.setState({
       review,
     });
@@ -80,44 +82,34 @@ class Review extends Component {
                                 </Row>
 
 
-                                <Row>
-                                  <Col>
-                                    <small className="text-muted">
-                                      <Button
-                                        variant="info"
-                                        size="sm"
-                                        onClick={    this.dummy()     }
-                                      >
+                                <div class="col">
+                          <small className="text-muted">
+                                    <button
+                                      className="info"
+                                      onClick={() => {
+                                        var url="/routes/reports/";
+                                        axios.post(url, {
+                                          contentType:"review",
+                                          identifier:review._id,
+                                          title:review.title,
+                                          description: review.description,
+                                          postedby: review.postedby,
+                                          reportedby:this.user.name
+                                        });
+                                        window.confirm('Reported Successfully');
+                                        this.props.history.push("/courses/" + this.props.courseid);
+                                      }}
+                                    >
                                       Report
-                                      </Button>
+                                    </button>
                                     </small>
-                                  </Col>
-                                </Row>
+                                  </div>
 
 
                                 
                               </Col>
 
 
-                              {/* <Col lg={5}>
-                                <ToggleButtonGroup
-                                >
-                                  <ToggleButton
-                                    value="up"
-                                    variant="outline-success"
-                                    size="sm"
-                                  >
-                                    Upvote ({this.state.review.upvotes})
-                                  </ToggleButton>
-                                  <ToggleButton
-                                    value="down"
-                                    variant="outline-danger"
-                                    size="sm"
-                                  >
-                                    Downvote ({this.state.review.downvotes})
-                                  </ToggleButton>
-                                </ToggleButtonGroup>
-                              </Col> */}
                             </Row>
                           </Col>
                         </Row>
