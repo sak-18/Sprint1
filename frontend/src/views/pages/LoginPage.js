@@ -108,7 +108,7 @@ class LoginPage extends Component {
                       <Button
                         className="btn-neutral btn-round"
                         color="info"
-                        href="/admin-page"
+                        href="/admin-review"
                         size="lg"
                       >
                         Admin Login

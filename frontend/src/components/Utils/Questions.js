@@ -24,18 +24,7 @@ class Questions extends Component {
       questions: null,
     };
   }
-  async upvotehelperfn(question){
-      var url="/routes/questions/upvote/"+String(question._id);
-      await axios.post(url, {
-        email: this.user.email,
-      });
-  }
-  async downvotehelperfn(question){
-      var url="/routes/questions/downvote/"+String(question._id);
-      await axios.post(url, {
-        email: this.user.email.email,
-      });
-  }
+
   async componentDidMount() {
     const questions = (await axios.get("/routes/questions")).data; // WORKING********************CHANGED "http://localhost:4000/"
     this.setState({
@@ -144,17 +133,24 @@ class Questions extends Component {
                                 marginTop: "auto",
                               }}
                             >
-                              <Row>
-                                <Col>
-                                <Button
-                                  variant="info"
-                                  size="sm"
-                                  onClick={    this.dummy()   }
-                                >
-                                  Report
-                                </Button>
-                                </Col>
-                              </Row>
+                              <small className="text-muted">
+                                    <button
+                                      className="info"
+                                      onClick={() => {
+                                        var url="/routes/reports/";
+                                        axios.post(url, {
+                                          contentType:"question",
+                                          identifier:question._id,
+                                          title:question.title,
+                                          description: question.description,
+                                          postedby: question.postedby,
+                                          reportedby:this.user.name
+                                        });
+                                      }}
+                                    >
+                                      Report
+                                    </button>
+                                  </small>
                             </Col>
                             <Col>
                               <button

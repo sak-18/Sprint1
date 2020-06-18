@@ -161,13 +161,22 @@ class Reviews extends Component {
                       <Row>
                         <div class="col">
                           <small className="text-muted">
-                            <Button
-                                        variant="info"
-                                        size="sm"
-                                        onClick={    this.dummy()   }
-                                      >
+                                    <button
+                                      className="info"
+                                      onClick={() => {
+                                        var url="/routes/reports/";
+                                        axios.post(url, {
+                                          contentType:"review",
+                                          identifier:review._id,
+                                          title:review.title,
+                                          description: review.description,
+                                          postedby: review.postedby,
+                                          reportedby:this.user.name
+                                        });
+                                      }}
+                                    >
                                       Report
-                                      </Button>
+                                    </button>
                                     </small>
                                   </div>
                               <div class="row">
@@ -175,7 +184,6 @@ class Reviews extends Component {
                                   <div class="row right-content-end">
                                   <Col >
                                     <button
-                                      disabled={this.state.disabled}
                                       className="btn btn-primary"
                                       onClick={() => {
                                         var url="/routes/reviews/upvote/"+String(review._id);
@@ -189,7 +197,6 @@ class Reviews extends Component {
                                   </Col>
                                   <Col>
                                     <button
-                                      disabled={this.state.disabled}
                                       className="btn btn-primary"
                                       onClick={() => {
                                         var url="/routes/reviews/downvote/"+String(review._id);

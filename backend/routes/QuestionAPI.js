@@ -50,7 +50,6 @@ router.route("/").post( (req, res) => {
 });
 
 //remove reported question
-//remove reported review
 router.route("/remove/:id/").delete((req, res) => {
   Question.findByIdAndDelete(req.params.id)
     .then(() => res.json("deleted successfully"))

@@ -60,5 +60,10 @@ router.post('/resolve/:id', (req,res) =>{
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
-
+//remove resolved report
+router.route("/remove/:id/").delete((req, res) => {
+  ReportedContent.findByIdAndDelete(req.params.id)
+    .then(() => res.json("deleted successfully"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 module.exports = router;
