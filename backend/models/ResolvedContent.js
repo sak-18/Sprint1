@@ -6,13 +6,13 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-// Creates schema for ReportedContent with required attributes and data types
-var ReportedContentSchema = new Schema({
+// Creates schema for ResolvedContent with required attributes and data types
+var ResolvedContentSchema = new Schema({
     contentType:{ type:String , required:true},
     title: { type: String, required: true},
-    description: { type: String, required: true },
-    resolutionStatus: { type: String , default:"Unresolved"},
+    resolutionStatus: { type:String, required:true},
     identifier: { type:String , required:true},
+    description: { type: String, required: true },
     reportedby: { type:String , required:true},
     postedby: { type:String , required:true},
     time: {
@@ -21,7 +21,7 @@ var ReportedContentSchema = new Schema({
       }
 });
 
-const ReportedContent = mongoose.model("ReportedContent", ReportedContentSchema);
+const ResolvedContent = mongoose.model("ResolvedContent", ResolvedContentSchema);
 // Below code used for exporting the Schemas
 // Used when we need to import the below Schemas in another file.
-module.exports = { ReportedContent: ReportedContent };
+module.exports = { ResolvedContent: ResolvedContent };

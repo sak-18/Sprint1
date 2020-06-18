@@ -63,6 +63,9 @@ app.use("/routes/reviews", reviewRouter);
 const reportedContentRouter = require("./routes/ReportedContentAPI");
 app.use("/routes/reports", reportedContentRouter);
 
+const resolvedContentRouter = require("./routes/ResolvedContentAPI");
+app.use("/routes/resolvedReport", resolvedContentRouter);
+
 
 const userRouter = require("./routes/UserAPI");
 app.use("/routes/users", userRouter);

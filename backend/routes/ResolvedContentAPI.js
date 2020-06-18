@@ -28,14 +28,16 @@ router.route("/").post( (req, res) => {
   const contentType = req.body.contentType;
   const resolutionStatus = req.body.resolutionStatus;
   const reportedby = req.body.reportedby;
+  const identifier = req.body.identifier;
+
   const title = req.body.title;
   const description = req.body.description;
   const postedby = req.body.postedby;
   
   const newResolvedContent = new ResolvedContent({
     contentType,
-    resolutionStatus,
     identifier,
+    resolutionStatus,
     reportedby,
     postedby,
     title,
