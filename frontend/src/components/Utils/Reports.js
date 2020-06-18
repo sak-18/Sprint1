@@ -86,7 +86,7 @@ class Questions extends Component {
           </ButtonToolbar>
         ) : null}
         <div className="row">
-          {this.state.reports === null && <p>Loading reports...</p>}
+          {this.state.reports === null && <p>Looks Empty In Here! </p>}
           {this.state.reports &&
             this.state.reports.map((report) => (
               <div key={report._id} className="col-sm-12 col-md-10 col-lg-12">
@@ -110,8 +110,16 @@ class Questions extends Component {
                                       onClick={() => {
                                         var url="/routes/"+String(report.contentType)+"s/remove/"+String(report.identifier);
                                         axios.delete(url);
-                                        var url2= "routes/reports/resolve/"+String(report._id);
-                                        axios.post(url2, {
+                                        var url2="/routes/reports/remove/"+String(report._id);
+                                        axios.delete(url2);
+                                        var url3= "routes/resolvedReport";
+                                        axios.post(url3, {
+                                          contentType: report.contentType,
+                                          identifier: report.identifier,
+                                          reportedby: report.reportedby,
+                                          postedby: report.postedby,
+                                          title: report.title,
+                                          description: report.description,
                                           resolutionStatus: "deleted",
                                         });
                                       }}
@@ -124,8 +132,16 @@ class Questions extends Component {
                                       disabled={this.state.disabled}
                                       className="btn btn-primary"
                                       onClick={() => {
-                                        var url2= "routes/reports/resolve/"+String(report._id);
-                                        axios.post(url2, {
+                                        var url2="/routes/reports/remove/"+String(report._id);
+                                        axios.delete(url2);
+                                        var url3= "routes/resolvedReport";
+                                        axios.post(url3, {
+                                          contentType: report.contentType,
+                                          identifier: report.identifier,
+                                          reportedby: report.reportedby,
+                                          postedby: report.postedby,
+                                          title: report.title,
+                                          description: report.description,
                                           resolutionStatus: "allowed",
                                         });
                                       }}
