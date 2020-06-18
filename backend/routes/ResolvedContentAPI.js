@@ -48,4 +48,14 @@ router.route("/").post( (req, res) => {
     .then(() => res.json("ResolvedStuff added!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+
+//remove resolved query
+router.route("/remove/:id/").delete((req, res) => {
+  ResolvedContent.findByIdAndDelete(req.params.id)
+    .then(() => res.json("deleted successfully"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+
+
 module.exports = router;

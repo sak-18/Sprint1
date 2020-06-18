@@ -12,7 +12,7 @@ import { Button } from "reactstrap";
 import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
 import "../../assets/css/DiscussionPage.css";
 // core components
-import Reports from "../../components/Utils/Reports.js";
+import ResolvedReports from "../../components/Utils/ResolvedReports.js";
 import NotFound from "../../components/Utils/NotFound.js";
 import { getDecodedToken, checkToken } from "../../utils/jwt";
 import { Col } from "reactstrap";
@@ -56,7 +56,7 @@ class DiscussionPage extends Component {
         <br />
         <Row>
           <Col lg="11"> 
-            <Route exact path={`/admin-unresolved`} component={Reports} />
+            <Route exact path={`/admin-resolved`} component={ResolvedReports} />
             <Route path="/discussion-page/test" component={NotFound} />
           </Col>
           

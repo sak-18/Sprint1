@@ -42,6 +42,7 @@ import CourseHomePage from "./views/pages/CourseHome.js";
 import Logout from "./components/Utils/logout.js";
 import AdminPage from "./views/pages/AdminPage.js";
 import AdminReviewPage from "./views/pages/AdminResolutionPage.jsx";
+import AdminResolvedPage from "./views/pages/AdminResolved.jsx";
 import AddCoursePage from "./views/pages/AddCoursePage.js";
 import DiscussionPage from "./views/pages/DiscussionPage.jsx";
 ReactDOM.render(
@@ -68,8 +69,12 @@ ReactDOM.render(
           render={(props) => <AdminPage {...props} />}
         />
         <Route
-          path="/admin-review"
+          path="/admin-unresolved"
           render={(props) => <AdminReviewPage {...props} />}
+        />
+        <Route
+          path="/admin-resolved"
+          render={(props) => <AdminResolvedPage {...props} />}
         />
         <Route
           path="/addcourse-page"

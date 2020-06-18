@@ -25,7 +25,7 @@ class Questions extends Component {
     };
   }
   async componentDidMount() {
-    const reports = (await axios.get("/routes/reports")).data; // WORKING********************CHANGED "http://localhost:4000/"
+    const reports = (await axios.get("/routes/resolvedReport")).data; // WORKING********************CHANGED "http://localhost:4000/"
     this.setState({
       reports,
     });
@@ -95,13 +95,14 @@ class Questions extends Component {
                     <Container>
                       <Row>
                         <Col>
+                            <h2> Resolution Stauts {report.resolutionStatus}</h2>
                             <p> {report.contentType} Reported by {report.reportedby}</p>
                             <Col style={{ wordWrap: "break-word" }}>
                             <h3 className="card-title">{report.title}</h3>
                             <h4 className="card-text">{report.description}</h4>
                             <p>Posted by {report.postedby}</p>
                             <small className="text-muted">
-                            <p>Reported</p>
+                                <p>Resolved </p>
                                 <TimeAgo date={report.time} />
                             </small>
                                 <Row>
@@ -109,11 +110,7 @@ class Questions extends Component {
                                       disabled={this.state.disabled}
                                       className="btn btn-primary"
                                       onClick={() => {
-                                        var url="/routes/"+String(report.contentType)+"s/remove/"+String(report.identifier);
-                                        axios.delete(url);
-                                        var url2="/routes/reports/remove/"+String(report._id);
-                                        axios.delete(url2);
-                                        var url3= "routes/resolvedReport";
+                                        var url3= "routes/reports";
                                         axios.post(url3, {
                                           contentType: report.contentType,
                                           identifier: report.identifier,
@@ -121,35 +118,14 @@ class Questions extends Component {
                                           postedby: report.postedby,
                                           title: report.title,
                                           description: report.description,
-                                          resolutionStatus: "deleted",
                                         });
+                                        var url2="/routes/resolvedReport/remove/"+String(report._id);
+                                        axios.delete(url2);
                                       }}
                                     >
-                                      Remove Content and send notif
+                                      Re-Evaluate
                                     </button>
                                 </Row>
-                                <Row>
-                                    <button
-                                      disabled={this.state.disabled}
-                                      className="btn btn-primary"
-                                      onClick={() => {
-                                        var url2="/routes/reports/remove/"+String(report._id);
-                                        axios.delete(url2);
-                                        var url3= "routes/resolvedReport";
-                                        axios.post(url3, {
-                                          contentType: report.contentType,
-                                          identifier: report.identifier,
-                                          reportedby: report.reportedby,
-                                          postedby: report.postedby,
-                                          title: report.title,
-                                          description: report.description,
-                                          resolutionStatus: "allowed",
-                                        });
-                                      }}
-                                    >
-                                      Allow Content and send notif
-                                    </button>
-                                </Row>    
                             </Col>
                         </Col>
                       </Row>
