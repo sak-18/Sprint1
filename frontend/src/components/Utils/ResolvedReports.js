@@ -95,14 +95,13 @@ class Questions extends Component {
                     <Container>
                       <Row>
                         <Col>
-                            <h2> Resolution Stauts {report.resolutionStatus}</h2>
+                            <h2> Resolution Status {report.resolutionStatus}</h2>
                             <p> {report.contentType} Reported by {report.reportedby}</p>
                             <Col style={{ wordWrap: "break-word" }}>
                             <h3 className="card-title">{report.title}</h3>
                             <h4 className="card-text">{report.description}</h4>
                             <p>Posted by {report.postedby}</p>
                             <small className="text-muted">
-                                <p>Resolved </p>
                                 <TimeAgo date={report.time} />
                             </small>
                                 <Row>
