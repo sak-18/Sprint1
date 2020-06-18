@@ -60,6 +60,10 @@ app.use("/routes/courses", coursesRouter); // ********************CHANGED
 const reviewRouter = require("./routes/ReviewAPI");
 app.use("/routes/reviews", reviewRouter);
 
+const reportedContentRouter = require("./routes/ReportedContentAPI");
+app.use("/routes/reports", reportedContentRouter);
+
+
 const userRouter = require("./routes/UserAPI");
 app.use("/routes/users", userRouter);
 

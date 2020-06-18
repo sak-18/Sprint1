@@ -92,6 +92,16 @@ router.post('/upvote/:id', (req,res) =>{
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
+
+//remove reported review
+router.route("/remove/:id/").delete((req, res) => {
+  Review.findByIdAndDelete(req.params.id)
+    .then(() => res.json("deleted successfully"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+
+//downvote review
 router.post('/downvote/:id', (req,res) =>{
   Review.findById(req.params.id)
     .then((review) => {
@@ -132,3 +142,6 @@ router.post('/downvote/:id', (req,res) =>{
     .catch((err) => res.status(400).json("Error: " + err));
 });
 module.exports = router;
+
+
+

@@ -49,7 +49,16 @@ router.route("/").post( (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+//remove reported question
+//remove reported review
+router.route("/remove/:id/").delete((req, res) => {
+  Question.findByIdAndDelete(req.params.id)
+    .then(() => res.json("deleted successfully"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 
+
+//upvote question
 router.post('/upvote/:id', (req,res) =>{
   Question.findById(req.params.id)
     .then((question) => {
@@ -90,6 +99,7 @@ router.post('/upvote/:id', (req,res) =>{
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
+//downvote question
 router.post('/downvote/:id', (req,res) =>{
   Question.findById(req.params.id)
     .then((question) => {

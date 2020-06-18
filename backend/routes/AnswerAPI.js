@@ -41,17 +41,5 @@ router.route("/:id").post( (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// router.route("/answer/:id").post((req, res) => {
-//   Question.findById(req.params.id)
-//     .then((question) => {
-//       question.answers.push(req.body.answer);
-//       console.log(question);
-//       question
-//         .save()
-//         .then(() => res.json("Question updated!"))
-//         .catch((err) => res.status(400).json("Error: " + err));
-//     })
-//     .catch((err) => res.status(400).json("Error: " + err));
-// });
 
 module.exports = router;
