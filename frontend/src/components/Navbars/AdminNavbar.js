@@ -78,6 +78,11 @@ function AdminNavbar() {
                 </NavLink>
               </NavItem>
               <NavItem>
+                <NavLink to="/admin-unresolved" tag={Link}>
+                View Unresolved Reports
+                </NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink to="/admin-resolved" tag={Link}>
                   View Resolved Reports
                 </NavLink>
