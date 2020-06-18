@@ -88,7 +88,7 @@ class RegisterPage extends Component {
                         </div>
                         <font color="red">
                           {this.state.failed
-                            ? "Please Refresh this page to go forward"
+                            ? "Something went wrong. Please try again! "
                             : ""}
                         </font>
                       </CardBody>
