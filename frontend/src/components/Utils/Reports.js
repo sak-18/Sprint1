@@ -123,6 +123,9 @@ class Questions extends Component {
                                           description: report.description,
                                           resolutionStatus: "deleted",
                                         });
+                                        window.confirm('This content has been removed from the platform. Resolved');
+                                        window.location.reload();
+                                        
                                       }}
                                     >
                                       Remove Content and send notif
@@ -145,6 +148,9 @@ class Questions extends Component {
                                           description: report.description,
                                           resolutionStatus: "allowed",
                                         });
+                                        window.confirm('This content has not been removed from the platform. Resolved.');
+                                        window.location.reload();
+
                                       }}
                                     >
                                       Allow Content and send notif

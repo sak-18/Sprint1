@@ -120,6 +120,8 @@ class Questions extends Component {
                                         });
                                         var url2="/routes/resolvedReport/remove/"+String(report._id);
                                         axios.delete(url2);
+                                        window.confirm('This content has marked for re-evaluation');
+                                        window.location.reload();
                                       }}
                                     >
                                       Re-Evaluate
