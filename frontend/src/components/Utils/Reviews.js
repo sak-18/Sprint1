@@ -65,7 +65,7 @@ class Reviews extends Component {
               type="radio"
               name="options"
               size="sm"
-              defaultValue={2}
+              defaultValue={4}
               onChange={value => {
                 let reviews = [...this.state.reviews];
                 let sortFunc = param => (a, b) => {
