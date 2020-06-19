@@ -67,7 +67,7 @@ class Questions extends Component {
               type="radio"
               name="options"
               size="sm"
-              defaultValue={2}
+              defaultValue={3}
               onChange={value => {
                 let questions = [...this.state.questions];
                 let sortFunc = param => (a, b) => {
