@@ -79,7 +79,7 @@ class Reviews extends Component {
                     break;
                   }
                   case 2: {
-                    reviews.sort(sortFunc("upvotes"));
+                    reviews.sort(sortFunc("upvotedby.length"));
                     break;
                   }
                   case 3: {
