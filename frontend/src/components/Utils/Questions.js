@@ -81,7 +81,7 @@ class Questions extends Component {
                     break;
                   }
                   case 2: {
-                    questions.sort(sortFunc("upvotes"));
+                    questions.sort(sortFunc("upvotedby.length"));
                     break;
                   }
                   
